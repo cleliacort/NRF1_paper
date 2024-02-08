@@ -92,15 +92,6 @@ plot <- ggplot(df_results,aes(y= correlation_spearman, x=rank)) +
   ylab("Spearman Correlation")+xlab("Ranking of Spearman correlation")+
   ggtitle("Correlation between Roma WG and Nilson WG footprinting")+
   guides(size = FALSE) 
-```
-
-    ## Warning: The `<scale>` argument of `guides()` cannot be `FALSE`. Use "none" instead as
-    ## of ggplot2 3.3.4.
-    ## This warning is displayed once every 8 hours.
-    ## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-    ## generated.
-
-``` r
 #show(plot)
 ```
 
