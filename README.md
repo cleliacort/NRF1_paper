@@ -28,9 +28,9 @@ Rscript [https://github.com/cleliacort/NRF1_paper/](https://github.com/cleliacor
 
 **Figure 2**
 
-[Fig2_upset_plot_in-house_ChIPseq](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Figure2_upset_plot_in-house_ChIPseq.md):
+[Fig2_upset_plot_in-house_ChIPseq](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/scripts/Figure2_upset_plot_in-house_ChIPseq.md):
 
-[Fig2_heatmap_jaccard_corr_binary_info_all_NRF1_ChIP-seq](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Figure2_heatmap_jaccard_corr_binary_info_all_NRF1_ChIP-seq.md):
+[Fig2_heatmap_jaccard_corr_binary_info_all_NRF1_ChIP-seq](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/scripts/Figure2_heatmap_jaccard_corr_binary_info_all_NRF1_ChIP-seq.md):
 
 **Suppl1**
 
