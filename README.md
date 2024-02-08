@@ -32,6 +32,10 @@ Rscript Fig1/scripts/Figure1g_commpass_survival_gene_auto.R -i "NRF1" -r COMMPAS
 
 [Fig2_heatmap_jaccard_corr_binary_info_all_NRF1_ChIP-seq](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/scripts/Figure2_heatmap_jaccard_corr_binary_info_all_NRF1_ChIP-seq.md):
 
+**Figure 3**
+
+[Fig3_heatmap_tumour_mgus](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/scripts/Fig3_heatmap_tumour_mgus.md):
+
 **Suppl1**
 
 [PCA_analysis](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Suppl/PCA_analysis_auto_0124.R):
