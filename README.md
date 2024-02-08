@@ -34,10 +34,10 @@ Rscript [https://github.com/cleliacort/NRF1_paper/](https://github.com/cleliacor
 
 **Suppl1**
 
-[PCA_analysis](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Supp_scripts_github/PCA_analysis_auto_0124.R):
+[PCA_analysis](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Suppl/PCA_analysis_auto_0124.R):
 
 ```r
-Rscript [https://github.com/cleliacort/NRF1_paper/](https://github.com/cleliacort/NRF1_paper/)blob/main/Fig1/scripts/Supp_scripts_github/PCA_analysis_auto_0124.R -i Fig1/data/Suppl/matrix_with_multicov_atac_mgus_MAXIMUM_VALUE_0423.txt -o Fig1/figures/Suppl/ -p "PCA_master_list_tumour_of_tumour_samples.png" -pheno Fig1/data/Suppl/sample_sheet_official_clinical_2023_subsetted_PHENOTYPE.csv
+Rscript Fig1/scripts/Suppl/PCA_analysis_auto_0124.R -i Fig1/data/Suppl/matrix_with_multicov_atac_mgus_MAXIMUM_VALUE_0423.txt -o Fig1/figures/Suppl/ -p "PCA_master_list_tumour_of_tumour_samples.png" -pheno Fig1/data/Suppl/sample_sheet_official_clinical_2023_subsetted_PHENOTYPE.csv
 ```
 
 [correlation_with_hint_ATAC_Roma](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Supp_scripts_github/correlation_with_hint_ATAC_Roma.md):
