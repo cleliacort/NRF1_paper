@@ -1,3 +1,5 @@
+# Figure2_heatmap_jaccard_corr_binary_info_all_NRF1_ChIP
+
 Upload the needed packages.
 
 ``` r
@@ -135,7 +137,7 @@ h_corr <- Heatmap(t_sub_jaccard,
 
 <figure>
 <img
-src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/figures/heatmap_jaccardCoeff_of_OUR_AND_ENCODE_AND_CISTROME_CHIP_NRF1_on_CONSENSUS_masterlist_KMS27_MM196_MM217_KMS18_1123prova.png"
+src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/figures/heatmap_jaccardCoeff_of_OUR_AND_ENCODE_AND_CISTROME_CHIP_NRF1_on_CONSENSUS_masterlist_KMS27_MM196_MM217_KMS18_1123.png"
 alt="Figure2_heatmap_jaccard_corr_binary_info_all_NRF1_ChIP-seq" />
 <figcaption
 aria-hidden="true">Figure2_heatmap_jaccard_corr_binary_info_all_NRF1_ChIP-seq</figcaption>
