@@ -1,3 +1,5 @@
+# Fig1_dataset_description
+
 Upload the needed packages.
 
 ``` r
@@ -175,7 +177,7 @@ ht_list <- ha %v% h_state %v% h_cit %v% h_pc %v% h_sex %v% h_age
 
 <figure>
 <img
-src="https://github.com/cleliacort/NRF1_paper/Fig1/figures/heatmap_clinical_and_peaks_information_mm59bis_with_disease_status_071123p.png"
+src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/figures/heatmap_clinical_and_peaks_information_mm59bis_with_disease_status_071123p.png"
 alt="Alt Text" />
 <figcaption aria-hidden="true">Alt Text</figcaption>
 </figure>

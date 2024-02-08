@@ -112,7 +112,7 @@ ggexport(plot,res=300,filename=name_file,width = 2500, height = 2500)
 
 <figure>
 <img
-src="https://github.com/cleliacort/NRF1_paper/Fig1/figures/spearman_correlation_ROMA_vs_NILSON_footprinting_wg_percentage_labels.png"
+src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/figures/spearman_correlation_ROMA_vs_NILSON_footprinting_wg_percentage_labels.png"
 alt="Alt Text" />
 <figcaption aria-hidden="true">Alt Text</figcaption>
 </figure>
