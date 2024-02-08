@@ -104,15 +104,10 @@ plot <- ggplot(df_results,aes(y= correlation_spearman, x=rank)) +
 #show(plot)
 ```
 
-``` r
-Save the dotplot
-name_file="figures/spearman_correlation_ROMA_vs_NILSON_footprinting_wg_percentage_labels.png"
-ggexport(plot,res=300,filename=name_file,width = 2500, height = 2500)
-```
-
 <figure>
 <img
 src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/figures/spearman_correlation_ROMA_vs_NILSON_footprinting_wg_percentage_labels.png"
-alt="Alt Text" />
-<figcaption aria-hidden="true">Alt Text</figcaption>
+alt="Figure1d_correlation_with_Nilson_dataset" />
+<figcaption
+aria-hidden="true">Figure1d_correlation_with_Nilson_dataset</figcaption>
 </figure>
