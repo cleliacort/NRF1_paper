@@ -36,6 +36,14 @@ Rscript Fig1/scripts/Figure1g_commpass_survival_gene_auto.R -i "NRF1" -r COMMPAS
 
 [Fig3_heatmap_tumour_mgus](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/scripts/Fig3_heatmap_tumour_mgus.md):
 
+[Fig3_heatmap_cell_lines_mgus_atac](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/scripts/deeptool_heatmap_atac_1023_PAPER.sh):
+
+Click [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/figures/deptools_plotprofile_NRF1_consensus_TUMOUR_OF_MGUS_U266_RPMI_KMS27_ON_10_master_list_consensus_our_chip_1123_2000_5000_5000_0_2_kmeans1_colorList7.png) to view the resulting heatmap plot.
+
+[Fig3_heatmap_chip_mgus_esordio_0923_PAPER](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/scripts/deeptool_heatmap_chip_mgus_esordio_0923_PAPER.sh):
+
+Click [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/figures/deptools_heatmap_plotprofile_master_list_consensus_nrf1_cleaned_from_mgsu_on_CHIP_ESORDIO_ands_MGUS_1123_2000_5000_5000_0_20_kmeans1_colorList7.png) to view the resulting heatmap plot.
+
 **Suppl1**
 
 [PCA_analysis](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Suppl/PCA_analysis_auto_0124.R):
