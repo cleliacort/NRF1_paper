@@ -40,9 +40,21 @@ Rscript Fig1/scripts/Figure1g_commpass_survival_gene_auto.R -i "NRF1" -r COMMPAS
 
 Click [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/figures/deptools_plotprofile_NRF1_consensus_TUMOUR_OF_MGUS_U266_RPMI_KMS27_ON_10_master_list_consensus_our_chip_1123_2000_5000_5000_0_2_kmeans1_colorList7.png) to view the resulting heatmap plot.
 
-[Fig3_heatmap_chip_mgus_esordio_0923_PAPER](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/scripts/deeptool_heatmap_chip_mgus_esordio_0923_PAPER.sh):
+[Fig3_heatmap_chip_mgus_esordio](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/scripts/deeptool_heatmap_chip_mgus_esordio_0923_PAPER.sh):
 
 Click [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/figures/deptools_heatmap_plotprofile_master_list_consensus_nrf1_cleaned_from_mgsu_on_CHIP_ESORDIO_ands_MGUS_1123_2000_5000_5000_0_20_kmeans1_colorList7.png) to view the resulting heatmap plot.
+
+**Figure 4**
+
+[Fig4_commpass_for_signature_pv1_3](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/scripts/commpass_for_signature_auto_ensID_2_pv1_3_PAPER.R):
+
+The R script was run using specific parameters. This generated two plots. The first plot, which can be found [here]((https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/figures/compass_progression_10_master_list_consensus_our_chip_1123_ANNOTATED_selected_TSS_minus_plus_2kb_UP_pv1_3.png)), illustrates the enrichment of genes that have notably increased their expression during the progression of the disease. The second plot, accessible [here]((https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/figures/compass_progression_10_master_list_consensus_our_chip_1123_ANNOTATED_selected_TSS_minus_plus_2kb_DOWN_pv1_3.png), displays the enrichment of genes whose expression significantly decreased during the same disease progression.
+
+```bash
+Rscript Fig4/scripts/commpass_for_signature_auto_ensID_2_pv1_3.R -v data/MMRF_CoMMpass_IA17_PER_PATIENT_VISIT_V2.tsv -g data/MMRF_CoMMpass_IA17_PER_PATIENT_V2.tsv -i data/10_master_list_consensus_our_chip_1123_ANNOTATED_selected_TSS_minus_plus_2kb_GENE_NAME.bed -r data/MMRF_CoMMpass_IA17_salmon_geneUnstranded_tpm.tsv -o figures -p compass_progression_10_master_list_consensus_our_chip_1123_ANNOTATED_selected_TSS_minus_plus_2kb -t compass_progression_10_master_list_consensus_our_chip_1123_ANNOTATED_selected_TSS_minus_plus_2kb -c "CD138pos" -s TRUE -S "UP" -sub T
+```
+
+[Fig4a_barplot_COMMPASS_up_and_down](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/scripts/Figure4a_barplot_COMMPASS_up_and_down_PAPER.md):
 
 **Suppl1**
 
