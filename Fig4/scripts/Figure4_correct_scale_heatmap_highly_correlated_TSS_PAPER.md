@@ -255,7 +255,7 @@ h <- Heatmap(matrix_prova_scale,
 
 <figure>
 <img
-src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/figures/barplot2_ISS_cluster_2_TSS_gene_highly_correlated_among_increase_disease_COMMPASS_only_tumour_with_NRF1_consensus_4cell_lines_0124_cluster_col_canberra_ward.D2_rows_manhattan_ward.D2_1023.png"
+src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/figures/heatmap_cluster_2_TSS_gene_highly_correlated_among_increase_disease_COMMPASS_only_tumour_with_NRF1_consensus_4cell_lines_0124_cluster_col_canberra_ward.D2_rows_manhattan_ward.D2_NRF1_expr_thr5_0124.png"
 alt="Fig4d_heatmap_COMMPASS_highly_enriched_NRF1-regualted_signature" />
 <figcaption
 aria-hidden="true">Fig4d_heatmap_COMMPASS_highly_enriched_NRF1-regualted_signature</figcaption>
