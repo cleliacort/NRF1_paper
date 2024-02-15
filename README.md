@@ -83,3 +83,7 @@ Rscript Fig1/scripts/Suppl/PCA_analysis_auto_0124.R -i Fig1/data/Suppl/matrix_wi
 Click [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/figures/Suppl/PCA_master_list_tumour_of_tumour_samples.png) to view the resulting PCA plot.
 
 [correlation_with_hint_ATAC_Roma](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Suppl/correlation_with_hint_ATAC_Roma.md):
+
+**Suppl4**
+
+[Multivariate_analysis](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/scripts/Suppl/multivariate_analysis_PAPER.md):
