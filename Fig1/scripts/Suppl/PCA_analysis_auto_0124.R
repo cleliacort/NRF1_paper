@@ -10,6 +10,8 @@ suppressPackageStartupMessages(library(readr))
 suppressPackageStartupMessages(library(RColorBrewer))
 suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(edgeR))
+suppressPackageStartupMessages(library(ggrepel))
+
 
 # define the command-line arguments
 parser <- ArgumentParser(description = "Create a barplot from a tab-separated file.")
