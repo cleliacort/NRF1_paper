@@ -17,8 +17,7 @@ Reading the clinical information of our tumour cohort and ATAC-seq peaks
 related to each patient.
 
 ``` r
-samplesheet_orig <- read_delim("data/samplesheet_with_clinical_data_customized_cytogenetic_pc_info_mm59bis_25october2023.txt",delim = "\t", col_names = T) %>% distinct() %>% 
-  filter(state!="RELAPSE") %>% filter(state!="REMISSION") %>% filter(state!="MGUS")
+samplesheet_orig <- read_delim("data/samplesheet_with_clinical_data_customized_cytogenetic_pc_info_mm59bis_4kpeaks_03september2024.tsv",delim = "\t", col_names = T) 
 
 peaks <- read.delim("data/number_of_peaks_per_sample_atac_tumour_mgus_2023.txt",sep = "\t", header = T) %>% arrange(NumLine)
 
@@ -172,12 +171,14 @@ Create the multi layers heatmap.
 ``` r
 ha = HeatmapAnnotation(Num_of_peaks = anno_barplot(number_peaks_barplot$NumLine, height = unit(2, "cm")))
 ht_list <- ha %v% h_state %v% h_cit %v% h_pc %v% h_sex %v% h_age
-#show(ht_list)
+show(ht_list)
 ```
+
+![](Figure1_dataset_pheno_description_files/figure-markdown_github/unnamed-chunk-8-1.png)
 
 <figure>
 <img
-src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/figures/heatmap_clinical_and_peaks_information_with_disease_status_071123.png"
+src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/figures/heatmap_clinical_and_peaks_information_with_disease_status_030924.png"
 alt="Fig1_dataset_description" />
 <figcaption aria-hidden="true">Fig1_dataset_description</figcaption>
 </figure>
