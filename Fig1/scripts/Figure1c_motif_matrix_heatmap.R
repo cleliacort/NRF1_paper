@@ -44,6 +44,16 @@ plot_name <- args$plot_name
 cluster_rows <- args$cluster_rows
 store_rows_cluster <- args$store_rows_cluster 
 
+# input_file <- "data/matrix_motif_atac_tumour_mgus_0423_groupv2.txt"
+# output_dir <- "figures/"
+# plot_name <- "heatmap_motifs_score_obs_exp_atac_tumour_mgus_0423_zoom_in_labels_C1"
+# plot_name <- "heatmap_motifs_score_obs_exp_atac_tumour_mgus_0423_zoom_in_labels_C3"
+# plot_name <- "heatmap_motifs_score_obs_exp_atac_tumour_mgus_0423_all"
+# plot_name <- "heatmap_motifs_score_obs_exp_atac_tumour_mgus_0423_zoom_in_labels_C2"
+# 
+# cluster_rows <- 3
+# store_rows_cluster <- TRUE
+
 #-----------
 cat("# Reading the matrix of motif")
 cat("\n")
@@ -105,11 +115,13 @@ h <- Heatmap(matrix_heatmap,
             top_annotation=colAnn,
             clustering_distance_rows = distance_row,
             clustering_method_rows = method_row,
-            row_split = cluster_rows, 
+            row_split = cluster_rows,
             border = TRUE,
             cluster_columns = F,
             cluster_rows=T
 )
+
+show(h)
 
 #-----------
 cat("# Save the heatmap.")
@@ -118,7 +130,7 @@ name_file_png=paste0(output_dir, "/",plot_name,"_",distance_row,"_",method_row,"
 ggexport(h,res=300,filename=name_file_png,width = 3000, height = 2000)
   
 name_file_svg=paste0(output_dir, "/",plot_name,"_",distance_row,"_",method_row,".svg",sep="")
-svg(name_file_svg, width = 12, height = 9)
+svg(name_file_svg,  width = 12, height = 9)
 print(h)
 dev.off()
 

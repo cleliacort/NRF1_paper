@@ -79,25 +79,25 @@ df_label <- df_results  %>% filter(correlation_spearman>=0.55) %>% separate(TF_n
 Create the plot with correlation information.
 
 ``` r
-col_cust="#41AB5D" #nilson
+col_cust="#87CC88" #nilson
 
 plot <- ggplot(df_results,aes(y= correlation_spearman, x=rank)) + 
-  geom_point(aes(size = 8),colour="gray74")+ #set features of dots
-  geom_point(data = df_label_color,aes(x= rank, y=correlation_spearman),size=5,colour=col_cust)+
- geom_text_repel(data = df_label, aes(label = TF_name, x = rank, y = correlation_spearman),min.segment.length = 0.5,box.padding = 0.5) +
+  geom_point(size = 8,colour="gray74")+ #set features of dots
+  geom_point(data = df_label_color,aes(x= rank, y=correlation_spearman),size=8,colour=col_cust)+
   scale_fill_identity() +
-  xlim(0,250)+
+  xlim(0,200)+
   theme_bw()+ 
   theme(panel.grid = element_blank())+ 
   ylab("Spearman Correlation")+xlab("Ranking of Spearman correlation")+
   ggtitle("Correlation between Roma WG and Nilson WG footprinting")+
-  guides(size = FALSE) 
+  guides(size = FALSE) #+
+
 #show(plot)
 ```
 
 <figure>
 <img
-src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/figures/spearman_correlation_ROMA_vs_NILSON_footprinting_wg_percentage_labels.png"
+src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/figures/spearman_correlation_ROMA_vs_NILSON_footprinting_wg_percentage_no_labels.png"
 alt="Figure1d_correlation_with_Nilson_dataset" />
 <figcaption
 aria-hidden="true">Figure1d_correlation_with_Nilson_dataset</figcaption>
