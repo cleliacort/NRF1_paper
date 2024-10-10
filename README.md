@@ -70,7 +70,7 @@ Rscript Fig4/scripts/commpass_search_for_correlated_genes_auto_PAPER.R -r data/M
 
 [Suppl_1b_counts_peaks_SI_checks](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Suppl/Suppl_1b_counts_peaks_SI_checks.md)
 
-[Suppl_1b_make_ggbarplot](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Suppl/Suppl_1b_make_ggbarplot.R): the R script was executed with the following parameters
+[Suppl_1b_make_ggbarplot](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Suppl/Suppl_1b_make_ggbarplot.R): the R script was executed with the following parameters and the resulting plot can be found [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/figures/Suppl/peaks_for_SI_atac_tumour_mgus_0423.png)
 
 ```jsx
 Rscript make_ggbarplot.r -i data/Suppl/number_of_peaks_per_sample_atac_tumour_mgus_2023.txt -o figures/Suppl -p peaks_for_SI_atac_tumour_mgus_0423.png -x "Filename" -y "NumLines" -pheno data/Suppl/sample_sheet_official_clinical_2023_subsetted_PHENOTYPE.csv -y_lab "Number of peaks" -x_lab ""
