@@ -6,9 +6,9 @@ https://github.com/cleliacort/NRF1_paper/blob/main/
 
 Considering to run all the script from a project located in the paper directory.
 
-**Figure 1**
+**Figure 1. Epigenetic profiling of NRF1 reveals NRF1 as a binder of highly penetrant loci**
 
-[Fig1b_dataset_description](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Figure1_dataset_pheno_description.md): 
+[Fig1b_dataset_description](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Figure1b_dataset_pheno_description.md): 
 
 [Fig1c_tf_enrichment_heatmap](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Figure1c_motif_matrix_heatmap.R): The R script was executed with the following parameters, and the resulting plot can be found [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/figures/heatmap_motifs_score_obs_exp_atac_tumour_mgus_0423_groupv2_manhattan_ward.D2.png)
 
@@ -16,15 +16,7 @@ Considering to run all the script from a project located in the paper directory.
 Rscript Fig1/scripts/Figure1c_motif_matrix_heatmap.R -i Fig1/data/matrix_motif_atac_tumour_mgus_0423_groupv2.txt -o Fig1/ -p heatmap_motifs_score_obs_exp_atac_tumour_mgus_0423_groupv2 -c 3 -store_rc TRUE
 ```
 
-[Fig1d_fp_correlation_with_Nilson_dataset](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Figure1d_correlation_with_Nilson.md):
-
-[Fig1g_commpass_survival_gene_NRF1](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Figure1g_commpass_survival_gene_auto.R): The R script was executed with the following parameters, and the resulting plot can be found [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/figures/survival_cluster_survival_commpass_NRF1_median_1123.png)
-
-```r
-Rscript Fig1/scripts/Figure1g_commpass_survival_gene_auto.R -i "NRF1" -r COMMPASS_IA17/MMRF_CoMMpass_IA17_salmon_geneUnstranded_tpm.tsv -o Fig1/figures/ -p survival_commpass_NRF1_median -surv COMMPASS_IA17/MMRF_CoMMpass_IA17_STAND_ALONE_SURVIVAL_V2.tsv -c "CD138pos" -t "median”
-```
-
-[Fig1h_boxplot_tpm_survival](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Figure1h_boxplot_tpm_survival.md):
+[Figure1f_correlation_with_Nilson.md](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Figure1f_correlation_with_Nilson.md)
 
 **Figure 2**
 
