@@ -40,7 +40,7 @@ plot_line <- ggline(df_plot, "Number.of.features", "Median",
 
 <figure>
 <img
-src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/figures/Suppl/saturation_plot_diveded_by_promoter_and_enhancer_0724.png"
+src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/figures/Suppl/prova_saturation_plot_diveded_by_promoter_and_enhancer_plus_all_0724.png"
 alt="Fig1_dataset_description" />
 <figcaption aria-hidden="true">Fig1_dataset_description</figcaption>
 </figure>
