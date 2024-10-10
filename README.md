@@ -66,6 +66,18 @@ Rscript Fig4/scripts/commpass_search_for_correlated_genes_auto_PAPER.R -r data/M
 
 **Suppl1**
 
+[Suppl_1a_saturation_plot](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/scripts/Suppl/Suppl_1a_saturation_plot.md)
+
+[Suppl_1b_counts_peaks_SI_checks](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/scripts/Suppl/Suppl_1b_counts_peaks_SI_checks.md)
+
+[Suppl_1b_make_ggbarplot](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/scripts/Suppl/Suppl_1b_make_ggbarplot.R)
+
+The R script was executed with the following parameters:
+
+```jsx
+Rscript make_ggbarplot.r -i data/Suppl/number_of_peaks_per_sample_atac_tumour_mgus_2023.txt -o figures/Suppl -p peaks_for_SI_atac_tumour_mgus_0423.png -x "Filename" -y "NumLines" -pheno data/Suppl/sample_sheet_official_clinical_2023_subsetted_PHENOTYPE.csv -y_lab "Number of peaks" -x_lab ""
+```
+
 [PCA_analysis](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Suppl/PCA_analysis_auto_0124.R):
 
 ```r
