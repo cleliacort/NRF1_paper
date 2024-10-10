@@ -17,7 +17,7 @@ Reading the clinical information of our tumour cohort and ATAC-seq peaks
 related to each patient.
 
 ``` r
-samplesheet_orig <- read_delim("data/samplesheet_with_clinical_data_customized_cytogenetic_pc_info_mm59bis_4kpeaks_03september2024.tsv",delim = "\t", col_names = T) 
+samplesheet_orig <- read_delim("data/samplesheet_with_clinical_data_customized_cytogenetic_pc_info_mm59bis_4kpeaks_necessary_info_03september2024.tsv",delim = "\t", col_names = T) 
 
 peaks <- read.delim("data/number_of_peaks_per_sample_atac_tumour_mgus_2023.txt",sep = "\t", header = T) %>% arrange(NumLine)
 
@@ -107,12 +107,12 @@ number_peaks_barplot <- samplesheet %>% select("official_labelling","NumLine") %
 Make the sub-heatmap with the number of tumour plasma cell information.
 
 ``` r
-pc_perc <- samplesheet %>% select("official_labelling","PC% MIDOLLARI (PM)  esordio","NumLine") %>% 
-  column_to_rownames(var="official_labelling") %>% arrange(NumLine) %>% select(-NumLine) %>% 
-  separate("PC% MIDOLLARI (PM)  esordio",c("perc",NA),sep="%") %>% 
-  mutate(perc=as.numeric(perc))
-df_pc <- as.data.frame(t(pc_perc))
-df_matrix_pc <- as.matrix(df_pc)
+# pc_perc <- samplesheet %>% select("official_labelling","PC% MIDOLLARI (PM)  esordio","NumLine") %>% 
+#   column_to_rownames(var="official_labelling") %>% arrange(NumLine) %>% select(-NumLine) %>% 
+#   separate("PC% MIDOLLARI (PM)  esordio",c("perc",NA),sep="%") %>% 
+#   mutate(perc=as.numeric(perc))
+# df_pc <- as.data.frame(t(pc_perc))
+# df_matrix_pc <- as.matrix(df_pc)
 
 sub_pc <- samplesheet %>% select("official_labelling","perc_PC_pat","NumLine") %>% 
   column_to_rownames(var="official_labelling") %>% arrange(NumLine) %>% select(-NumLine)
@@ -171,10 +171,8 @@ Create the multi layers heatmap.
 ``` r
 ha = HeatmapAnnotation(Num_of_peaks = anno_barplot(number_peaks_barplot$NumLine, height = unit(2, "cm")))
 ht_list <- ha %v% h_state %v% h_cit %v% h_pc %v% h_sex %v% h_age
-show(ht_list)
+#show(ht_list)
 ```
-
-![](Figure1_dataset_pheno_description_files/figure-markdown_github/unnamed-chunk-8-1.png)
 
 <figure>
 <img
