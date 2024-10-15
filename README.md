@@ -18,15 +18,15 @@ Rscript ./scripts/Figure1c_motif_matrix_heatmap.R -i ./data/matrix_motif_atac_tu
 
 [Figure1f_correlation_with_Nilson.md](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Figure1f_correlation_with_Nilson.md)
 
-**Figure 2**
+**Figure 2.**
 
-[Fig2d_NRF1_median_expression_survival](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/scripts/Fig2e_boxplot_tpm_survival.md)
-
-[Fig2e_boxplots_showing_NRF1_enrichment_vs_ISS](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/commpass_survival_gene_auto.R): The R script was executed with the following parameters, and the resulting plot can be found [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/figures/TPM_per_ISS_in_population_divided_per_NRF1_expression_low_high_201123.png)
+[Fig2d_NRF1_median_expression_survival](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/scripts/commpass_survival_gene_auto.R): The R script was executed with the following parameters, and the resulting plot can be found [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/figures/survival_cluster_survival_commpass_NRF1_median_1123.png)
 
 ```bash
 Rscript ./commpass_survival_gene_auto.R -i "NRF1" -r ../COMMPASS_IA17/MMRF_CoMMpass_IA17_salmon_geneUnstranded_tpm.tsv -o ./figures -p survival_commpass_NRF1_median_1123 -surv ../COMMPASS_IA17/CoMMpass_IA17_FlatFiles_0323/MMRF_CoMMpass_IA17_STAND_ALONE_SURVIVAL_V2.tsv -c "CD138pos" -t "median"
 ```
+
+[Fig2e_boxplots_showing_NRF1_enrichment_vs_ISS](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/scripts/Fig2e_boxplot_tpm_survival.md)
 
 [Fig2g_emission_and_transition_heatmap_chromHMM](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/scripts/Fig2g_and_Suppl2_emission_and_transition_heatmap_chromHMM_0924.md)
 
