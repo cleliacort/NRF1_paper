@@ -13,16 +13,22 @@ Considering to run all the script from a project located in the paper directory.
 [Fig1c_tf_enrichment_heatmap](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Figure1c_motif_matrix_heatmap.R): The R script was executed with the following parameters, and the resulting plot can be found [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/figures/heatmap_motifs_score_obs_exp_atac_tumour_mgus_0423_groupv2_manhattan_ward.D2.png)
 
 ```r
-Rscript Fig1/scripts/Figure1c_motif_matrix_heatmap.R -i Fig1/data/matrix_motif_atac_tumour_mgus_0423_groupv2.txt -o Fig1/ -p heatmap_motifs_score_obs_exp_atac_tumour_mgus_0423_groupv2 -c 3 -store_rc TRUE
+Rscript ./scripts/Figure1c_motif_matrix_heatmap.R -i ./data/matrix_motif_atac_tumour_mgus_0423_groupv2.txt -o ./figures -p heatmap_motifs_score_obs_exp_atac_tumour_mgus_0423_groupv2 -c 3 -store_rc TRUE
 ```
 
 [Figure1f_correlation_with_Nilson.md](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Figure1f_correlation_with_Nilson.md)
 
 **Figure 2**
 
-[Fig2_upset_plot_in-house_ChIPseq](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/scripts/Figure2_upset_plot_in-house_ChIPseq.md):
+[Fig2d_NRF1_median_expression_survival](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/scripts/Fig2e_boxplot_tpm_survival.md)
 
-[Fig2_heatmap_jaccard_corr_binary_info_all_NRF1_ChIP-seq](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/scripts/Figure2_heatmap_jaccard_corr_binary_info_all_NRF1_ChIP-seq.md):
+[Fig2e_boxplots_showing_NRF1_enrichment_vs_ISS](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/commpass_survival_gene_auto.R): The R script was executed with the following parameters, and the resulting plot can be found [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/figures/TPM_per_ISS_in_population_divided_per_NRF1_expression_low_high_201123.png)
+
+```bash
+Rscript ./commpass_survival_gene_auto.R -i "NRF1" -r ../COMMPASS_IA17/MMRF_CoMMpass_IA17_salmon_geneUnstranded_tpm.tsv -o ./figures -p survival_commpass_NRF1_median_1123 -surv ../COMMPASS_IA17/CoMMpass_IA17_FlatFiles_0323/MMRF_CoMMpass_IA17_STAND_ALONE_SURVIVAL_V2.tsv -c "CD138pos" -t "median"
+```
+
+[Fig2g_emission_and_transition_heatmap_chromHMM](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/scripts/Fig2g_and_Suppl2_emission_and_transition_heatmap_chromHMM_0924.md)
 
 **Figure 3**
 
@@ -66,11 +72,11 @@ Rscript Fig4/scripts/commpass_search_for_correlated_genes_auto_PAPER.R -r data/M
 
 **Suppl1**
 
-[Suppl_1a_saturation_plot](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Suppl/Suppl_1a_saturation_plot.md)
+[Suppl_1_saturation_plot](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Suppl/Suppl_1a_saturation_plot.md)
 
-[Suppl_1b_counts_peaks_SI_checks](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Suppl/Suppl_1b_counts_peaks_SI_checks.md)
+[Suppl_1_counts_peaks_SI_checks](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Suppl/Suppl_1b_counts_peaks_SI_checks.md)
 
-[Suppl_1b_make_ggbarplot](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Suppl/Suppl_1b_make_ggbarplot.R): the R script was executed with the following parameters and the resulting plot can be found [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/figures/Suppl/peaks_for_SI_atac_tumour_mgus_0423.png)
+[Suppl_1_make_ggbarplot](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Suppl/Suppl_1b_make_ggbarplot.R): the R script was executed with the following parameters and the resulting plot can be found [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/figures/Suppl/peaks_for_SI_atac_tumour_mgus_0423.png)
 
 ```jsx
 Rscript make_ggbarplot.r -i data/Suppl/number_of_peaks_per_sample_atac_tumour_mgus_2023.txt -o figures/Suppl -p peaks_for_SI_atac_tumour_mgus_0423.png -x "Filename" -y "NumLines" -pheno data/Suppl/sample_sheet_official_clinical_2023_subsetted_PHENOTYPE.csv -y_lab "Number of peaks" -x_lab ""
