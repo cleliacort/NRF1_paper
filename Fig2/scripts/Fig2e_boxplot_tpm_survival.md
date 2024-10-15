@@ -4,7 +4,7 @@ Reading the necessary files data.
 patients_class <- "data/patient_classification_based_on_median_expression_of_NRF1.txt"
 patients_class_df <- read.delim(patients_class, sep = "\t", header = T) #%>% distinct() 
 
-iss <- read.delim("../COMMPASS/MMRF_CoMMpass_IA17_PER_PATIENT_V2.tsv", sep = "\t", header = T) %>% dplyr::select(PUBLIC_ID,D_PT_iss)
+iss <- read.delim("../COMMPASS_IA17/MMRF_CoMMpass_IA17_PER_PATIENT_V2.tsv", sep = "\t", header = T) %>% dplyr::select(PUBLIC_ID,D_PT_iss)
 
 patient_class_iss_df <- merge(patients_class_df,iss,by= "PUBLIC_ID")
 ```
@@ -32,7 +32,7 @@ p <- ggpar(p,ylim=c(0,15))+border()
 
 <figure>
 <img
-src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/figures/survival_cluster_survival_commpass_NRF1_median_1123.png"
+src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/figures/TPM_per_ISS_in_population_divided_per_NRF1_expression_low_high_201123.png"
 alt="Fig2_NRF1_median_expression_survival" />
 <figcaption
 aria-hidden="true">Fig2_NRF1_median_expression_survival</figcaption>
