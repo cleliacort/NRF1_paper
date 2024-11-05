@@ -1,5 +1,3 @@
-# Fig3_heatmap_tumour_mgus
-
 Upload the needed packages.
 
 ``` r
@@ -46,16 +44,8 @@ information from the MGUS.
 # Retrive the ID and the groups to which the samples belong 
 pheno <- data_frame(sample_id=colnames(reads_matrix_sorted)) %>% arrange(sample_id) %>% 
   mutate(type=case_when(str_detect( sample_id, "tumour")~ "tumour", TRUE ~ "mgus"))
-```
 
-    ## Warning: `data_frame()` was deprecated in tibble 1.1.0.
-    ## ℹ Please use `tibble()` instead.
-    ## This warning is displayed once every 8 hours.
-    ## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-    ## generated.
-
-``` r
-samplesheet_orig <- read.delim("data/samplesheet_with_clinical_data_customized_cytogenetic_pc_info_mm59bis_25october2023.txt",header = T) %>% distinct() 
+samplesheet_orig <- read.delim("data/samplesheet_with_clinical_data_customized_cytogenetic_pc_info_mm59bis_4kpeaks_necessary_info_03september2024.tsv",header = T) %>% distinct() 
 
 df_sub1 <- samplesheet_orig %>% select(patient_id,state,perc_PC_pat)
 df_sub2 <-   samplesheet_orig %>% select(official_labelling,state,perc_PC_pat) %>% rename(patient_id=official_labelling)

@@ -7,7 +7,7 @@ conda activate ATAC_seq
 bw_files=" "
 id_file=" "
 
-outputDir="data/Figures"
+outputDir="data/atac_tumour_mgus_2023/Figures"
 
 #ESORDIO-CHIP-NRF1
 bw_es="data/chip_seq_NRF1_ES_0823/macs2"
