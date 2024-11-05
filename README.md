@@ -30,17 +30,19 @@ Rscript ./commpass_survival_gene_auto.R -i "NRF1" -r ../COMMPASS_IA17/MMRF_CoMMp
 
 [Fig2g_emission_and_transition_heatmap_chromHMM](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/scripts/Fig2g_and_Suppl2_emission_and_transition_heatmap_chromHMM_0924.md)
 
-**Figure 3**
-
-[Fig3_heatmap_tumour_mgus](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/scripts/Fig3_heatmap_tumour_mgus.md):
+**Figure 3. NRF1 binding is higher at selected regions in patients**
 
 [Fig3_heatmap_cell_lines_mgus_atac](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/scripts/deeptool_heatmap_atac_1023_PAPER.sh):
 
-Click [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/figures/deptools_plotprofile_NRF1_consensus_TUMOUR_OF_MGUS_U266_RPMI_KMS27_ON_10_master_list_consensus_our_chip_1123_2000_5000_5000_0_2_kmeans1_colorList7.png) to view the resulting heatmap plot.
+Click [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/figures/deptools_plotprofile_NRF1_consensus_TUMOUR_OF_MGUS_U266_RPMI_KMS27_MM196new_ON_10_master_list_consensus_our_chip_1123_2000_5000_5000_0_2_kmeans1_colorList7.png) to view the resulting heatmap plot.
+
+[Fig3_heatmap_atac_tumour_mgus](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/scripts/Fig3_heatmap_tumour_mgus.md)
 
 [Fig3_heatmap_chip_mgus_esordio](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/scripts/deeptool_heatmap_chip_mgus_esordio_0923_PAPER.sh):
 
 Click [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/figures/deptools_heatmap_plotprofile_master_list_consensus_nrf1_cleaned_from_mgsu_on_CHIP_ESORDIO_ands_MGUS_1123_2000_5000_5000_0_20_kmeans1_colorList7.png) to view the resulting heatmap plot.
+
+[Fig3_ABC_score_CRE_non_coding](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/scripts/Fig3_checks_enhancer_non_coding_regions_PAPER.Rmd)
 
 **Figure 4**
 
