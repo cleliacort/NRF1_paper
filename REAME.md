@@ -50,7 +50,7 @@ The R script was executed with the following parameters, and the resulting plot 
 Rscript Fig4/scripts/commpass_for_signature_auto_ensID_2_pv1_3.R -v data/MMRF_CoMMpass_IA17_PER_PATIENT_VISIT_V2.tsv -g data/MMRF_CoMMpass_IA17_PER_PATIENT_V2.tsv -i data/10_master_list_consensus_our_chip_1123_ANNOTATED_selected_TSS_minus_plus_2kb_GENE_NAME.bed -r data/MMRF_CoMMpass_IA17_salmon_geneUnstranded_tpm.tsv -o figures -p compass_progression_10_master_list_consensus_our_chip_1123_ANNOTATED_selected_TSS_minus_plus_2kb -t compass_progression_10_master_list_consensus_our_chip_1123_ANNOTATED_selected_TSS_minus_plus_2kb -c "CD138pos" -s TRUE -S "UP" -sub T
 ```
 
-[Fig4c_commpass_search_for_correlated_genes](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/scripts/Figure4d_correct_scale_heatmap_highly_correlated_TSS_PAPER.Rmd): The script used for obtaining the COMMPASS heatmap based on NRF1 gene regulated signature and the survival analysis between sub-sample of patient with high and low signature 
+[Fig4c_commpass_search_for_correlated_genes](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/scripts/Figure4_correct_scale_heatmap_highly_correlated_TSS_and_survivals.md): The script used for obtaining the COMMPASS heatmap based on NRF1 gene regulated signature and the survival analysis between sub-population of patients with high and low signature 
 
 ```r
 Rscript Fig4/scripts/Figure4_correct_scale_heatmap_highly_correlated_TSS_and_survivals.md
