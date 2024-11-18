@@ -13,7 +13,9 @@ suppressPackageStartupMessages(library(RColorBrewer))
 suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(svglite))
 suppressPackageStartupMessages(library(HGNChelper))
-
+library(biomaRt)
+library(dbplyr)
+library(BiocManager)
 # define the command-line arguments
 parser <- ArgumentParser(description = "Create a barplot from a tab-separated file.")
 parser$add_argument("--visit_file", "-v", type = "character", help = "Input the path of the file with visit number info.")
@@ -59,8 +61,25 @@ reads_file <- args$reads_file
 subset_matrix <- args$subset_matrix
 output_dir <- args$output_dir
 plot_name <- args$plot_name
+title_plot <- args$title
 # # -------------------
-
+# MANUAL EXAMPLE
+cell="CD138pos"
+want_significant=TRUE
+which_selection="UP"
+label_x_cust <- args$x_label
+labe_y_cust <- args$y_label
+visit_file <- "data/MMRF_CoMMpass_IA17_PER_PATIENT_VISIT_V2.tsv"
+stage_file <- "data/MMRF_CoMMpass_IA17_PER_PATIENT_V2.tsv"
+gene_file <- "data/10_master_list_consensus_our_chip_1123_ANNOTATED_selected_TSS_minus_plus_2kb_GENE_NAME.bed"
+reads_file <- "data/MMRF_CoMMpass_IA17_salmon_geneUnstranded_tpm.tsv"
+subset_matrix <- args$subset_matrix
+output_dir <- args$output_dir
+plot_name <- "compass_progression_10_master_list_consensus_our_chip_1123_ANNOTATED_selected_TSS_minus_plus_2kb_100624"
+title_plot <-"compass_progression_10_master_list_consensus_our_chip_1123_ANNOTATED_selected_TSS_minus_plus_2kb_100624" 
+labe_y_cust <- "Normalized reads counts(tpm)"
+label_x_cust <- "ISS"
+output_dir <- "figures"
 #-----------
 cat("# Reads COMMPASS file with name with visit info")
 cat("\n")
@@ -81,9 +100,10 @@ stage_iss <- merge(stage,iss,by="PUBLIC_ID")
 #-----------
 cat("# Reads the list of selected genes to examine")
 cat("\n")
-list_gene <- read.delim(gene_file, sep = "\t", header = F)
+list_gene <- read.delim(gene_file, sep = "\t", header = F) 
 # Change the colnames 
 colnames(list_gene) <- c("gene_name")
+list_gene <- list_gene %>% filter(!is.na(gene_name)) %>% distinct()
 
 #-----------
 cat("# Upload the COMMPASS file containing normalized reads counts of all transcripts examined")
@@ -96,12 +116,12 @@ cat("\n")
 mart37 <- biomaRt::useMart(biomart = "ENSEMBL_MART_ENSEMBL",dataset = "hsapiens_gene_ensembl",host = "grch37.ensembl.org")
 genes37 <-  biomaRt::getBM(attributes = c("ensembl_gene_id","hgnc_symbol"), mart=mart37)
 # Retrieve the Ensembl ID of the gene passed as input
-ens_gene <- merge(list_gene,genes37,by.x="gene_name",by.y="hgnc_symbol")
+ens_gene <- merge(list_gene,genes37,by.x="gene_name",by.y="hgnc_symbol") 
 
 #-----------
 cat("# Subset the normalized reads counts to those selected genes")
 cat("\n")
-reads_sub <- merge(norm_reads_counts,ens_gene,by.x="Gene",by.y="ensembl_gene_id") %>% distinct()
+reads_sub <- merge(norm_reads_counts,ens_gene,by.x="Gene",by.y="ensembl_gene_id")  %>% distinct()
 
 if(subset_matrix == TRUE | subset_matrix==T ){
   #-----------
@@ -227,8 +247,8 @@ if(want_significant == FALSE){
   df_info <- df_info %>% separate(d,c("GENE_NAME","pv1_2","pv1_3","pv2_3","median_iss1","median_iss2","median_iss3","EXPRESSION"),sep="_")
   
   # Save significant genes with wilcox information
-  name_file_pv <- paste0(output_dir, "/", plot_name,"_05_wilcox_OR_ISS_pv1_3.txt")
-  write.table(df_info,name_file_pv, sep="\t", quote=F, col.names=T, row.names=F)
+  #name_file_pv <- paste0(output_dir, "/", plot_name,"_05_wilcox_OR_ISS_pv1_3.txt")
+  #write.table(df_info,name_file_pv, sep="\t", quote=F, col.names=T, row.names=F)
 
   # Select the transcript for the behavior in the disease progression
   if(which_selection == "DOWN"){
@@ -243,8 +263,8 @@ if(want_significant == FALSE){
   num_diff_genes <- length(df_info)
   
     #Save the selected gene based on the behavior during disease progression
-  name_file_pv_filt <- paste0(output_dir, "/", plot_name,"_",which_selection,"_05_wilcox_OR_ISS_pv1_3.txt")
-  write.table(df_info,name_file_pv_filt, sep="\t", quote=F, col.names=F, row.names=F)
+  #name_file_pv_filt <- paste0(output_dir, "/", plot_name,"_",which_selection,"_05_wilcox_OR_ISS_pv1_3.txt")
+  #write.table(df_info,name_file_pv_filt, sep="\t", quote=F, col.names=F, row.names=F)
 
   # Subset the dataframe with the reads count of each selected transcript of all sample
   significant_stage_transcripts <- t_reads_sub_mod %>% dplyr::select(1,all_of(df_info))
@@ -278,11 +298,13 @@ p <- ggboxplot(df_long_results,x = "type", y = "Valore", fill = "type", color = 
                lwd=0.6,
                xlab=label_x_cust,ylab=labe_y_cust ,
                bxp.errorbar =TRUE,
-               title=paste0(args$title,"(n=",num_diff_genes,")")
+               title=paste0(title_plot,"(n=",num_diff_genes,")")
                )+
-  stat_compare_means(comparisons = my_comparisons,label = "p.format")+
-  border()
-#show(p)
+  #stat_compare_means(comparisons = my_comparisons,label = "p.format")+
+  border()#+
+  #geom_jitter(position = position_jitter(width = 0.2), size = 1, color = "#4D4D4D", alpha = 0.5)
+
+show(p)
 
 #-----------
 cat("# Saving the plot")
@@ -292,8 +314,9 @@ ggexport(p,res=300,filename=paste0(output_dir, "/", plot_name,"_",which_selectio
 max_y=60
 p <- ggpar(p,ylim=c(0,max_y))+scale_y_continuous(breaks = seq(0, max_y, by = 10)) +
   theme(plot.title = element_text(size = 5)) +border()
+
 # Save the plot to a file
-ggexport(p,res=300,filename=paste0(output_dir, "/", plot_name,"_",which_selection,"_pv1_3.png"),width = 2000, height = 2500)
+ggexport(p,res=300,filename=paste0(output_dir, "/", plot_name,"_",which_selection,"_pv1_3.png"),width = 1500, height = 2500)
 
 
 

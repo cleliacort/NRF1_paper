@@ -1,8 +1,13 @@
-# Figure4def_correct_scale_heatmap_highly_correlated_TSS
+---
+title: "Figure4_correct_scale_heatmap_highly_correlated_TSS_and_survivals"
+output:
+  md_document:
+    variant: markdown_github
+---
+# Figure4_correct_scale_heatmap_highly_correlated_TSS_and_survivals
 
-Upload the needed packages.
-
-``` r
+Upload the needed packages. 
+```{r setup, warning=FALSE,message=FALSE}
 library(ggpubr)
 library(ggplot2)
 library(readr)
@@ -18,44 +23,40 @@ library(survival)
 library(survminer)
 ```
 
-## Fig4d Heatmap based on gene signature using COMMPASS
+## Heatmap based on gene signature using COMMPASS
 
 Reading the COMMPASS IA17 tpm file.
-
-``` r
+```{r tpm_matrix,warning=FALSE,message=FALSE}
 prefix="TSS_gene_highly_correlated_among_increase_disease_COMMPASS_only_tumour_with_NRF1_consensus_4cell_lines_0124"
 
 tpm <- "data/MMRF_CoMMpass_IA17_salmon_geneUnstranded_tpm.tsv"
 matrix_orig <- read.table(tpm, header = TRUE, row.names = 1) 
 matrix_mod <- matrix_orig %>% distinct() %>% rownames_to_column(var="ensembl_gene_id")
+
 ```
 
-Upload the gene-ensmblid correspondence.
-
-``` r
+Upload the gene-ensmblid correspondence. 
+```{r gene37,warning=FALSE,message=FALSE}
 mart37 <- biomaRt::useMart(biomart = "ENSEMBL_MART_ENSEMBL",dataset = "hsapiens_gene_ensembl",host = "grch37.ensembl.org")
 genes37 <-  biomaRt::getBM(attributes = c("ensembl_gene_id","hgnc_symbol"), mart=mart37)
 ```
 
 Retrieve the Ensembl ID of the gene passed as input
-
-``` r
+```{r matrix_gene,warning=FALSE,message=FALSE}
 matrix_mod_gene <- merge(matrix_mod,genes37,by="ensembl_gene_id")
 matrix_mod_gene <- matrix_mod_gene %>% select(-ensembl_gene_id)
 ```
 
-Upload the gene list of interest and use it to subset the original
-COMMPASS TPM dataframe.
-
-``` r
-genes <- "figures/cluster_motif_1_heatmap_correlation_compass_progression_10_master_list_consensus_our_chip_1123_ANNOTATED_selected_TSS_minus_plus_2kb_UP_05_wilcox_OR_ISS_pv1_3_0124.txt"
+Upload the gene list of interest and use it to subset the original COMMPASS TPM dataframe.
+```{r matrix_gene_sub,warning=FALSE,message=FALSE}
+genes <- "data/cluster_motif_1_heatmap_correlation_compass_progression_10_master_list_consensus_our_chip_1123_ANNOTATED_selected_TSS_minus_plus_2kb_UP_05_wilcox_OR_ISS_pv1_3_0124.txt"
 gene_list <- read.table(genes, header = F) %>% rename(gene=V1)
 matrix_sub <- merge(matrix_mod_gene,gene_list,by.x = "hgnc_symbol", by.y="gene")
 ```
 
-Retrieve the clinical(disease stage) and survival information.
 
-``` r
+Retrieve the clinical(disease stage) and survival information.
+```{r clinical_info,warning=FALSE,message=FALSE}
 # Upload the survival data 
 survival <- read.csv("data/MMRF_CoMMpass_IA17_STAND_ALONE_SURVIVAL_V2.tsv", sep = "\t", header = T)
 survival <- survival %>%dplyr::select(PUBLIC_ID,oscdy,censos) 
@@ -71,9 +72,9 @@ stage_iss <- merge(stage,iss,by="PUBLIC_ID") %>% mutate(Patient_ID=paste(Specime
 surv_stage_iss <- merge(survival,stage_iss,by="PUBLIC_ID", all.x = TRUE)
 ```
 
-Retrieve the genetic information.
 
-``` r
+Retrieve the genetic information.
+```{r mut_info,warning=FALSE,message=FALSE}
 # Select only the mutation and translocation information needed 
 mut_and_trasloc <- read.delim("data/MMRF_CoMMpass_A17_merged_locally_mutations_and_traslocation.txt", sep = "\t", header = T) %>% 
   dplyr::select(SAMPLE,
@@ -91,10 +92,8 @@ mut_and_trasloc <- read.delim("data/MMRF_CoMMpass_A17_merged_locally_mutations_a
                 mutationHIST1H1E, mutationLTB)
 ```
 
-Merge the clinical, survival and genetic information in a unique
-dataframe.
-
-``` r
+Merge the clinical, survival and genetic information in a unique dataframe.
+```{r clnical_and_mut}
 # Merge the survival-iss information with th mut-traslocation info 
 surv_stage_iss_mut_trasloc <- merge(surv_stage_iss,mut_and_trasloc,by.x = "Patient_ID", by.y = "SAMPLE")
 
@@ -102,10 +101,8 @@ surv_stage_iss_mut_trasloc <- merge(surv_stage_iss,mut_and_trasloc,by.x = "Patie
 surv_stage_iss_mut_trasloc <- surv_stage_iss_mut_trasloc %>% filter(!is.na(D_PT_iss))
 ```
 
-Define patient groups based on the expression of the NRF1 gene and add
-this information to the dataframe created earlier.
-
-``` r
+Define patient groups based on the expression of the NRF1 gene and add this information to the dataframe created earlier.
+```{r expr_nrf1_level}
 matrix_nrf1 <- matrix_mod_gene %>% filter(hgnc_symbol=="NRF1") 
 matrix_nrf1 <- as.data.frame(t(matrix_nrf1)) 
 matrix_nrf1 <- matrix_nrf1 %>% filter(V1!="NRF1") %>% mutate(median_gene=median(as.numeric(V1))) 
@@ -121,10 +118,9 @@ matrix_nrf1 <- matrix_nrf1 %>%  mutate(status_5thr=case_when( as.numeric(V1) <= 
 surv_stage_iss_mut_trasloc <- merge(surv_stage_iss_mut_trasloc,matrix_nrf1,by="Patient_ID") 
 ```
 
-Subset the original matrix to include only patients with clinical,
-survival, and mutational information.
 
-``` r
+Subset the original matrix to include only patients with clinical, survival, and mutational information.
+```{r sub_matrix_clinical}
 # Customize the reads matrix 
 matrix_sub_mod <- matrix_sub %>% column_to_rownames(var="hgnc_symbol")
 matrix_sub_mod_t <- as.data.frame(t(matrix_sub_mod)) %>% rownames_to_column(var="id")
@@ -138,9 +134,9 @@ matrix_prova_mod <- matrix_prova %>% column_to_rownames(var="id")
 matrix_prova_scale <- t(scale(matrix_prova_mod))
 ```
 
-Define the columns annotation for the heatmap.
 
-``` r
+Define the columns annotation for the heatmap.
+```{r col_anno,warning=FALSE,message=FALSE}
 metadata_df <- data_frame(Patient_ID=colnames(matrix_prova_scale))
 pheno_order <- merge(metadata_df,surv_stage_iss_mut_trasloc,by="Patient_ID")
 
@@ -214,8 +210,7 @@ colAnn <- HeatmapAnnotation(
 ```
 
 Create the heatmap
-
-``` r
+```{r make_heatmap}
 mycols <- colorRamp2(c(-2,-1,0,1,2) ,c("#27374D","#b3bdcc","#FFFFFF","#e9b597","#D36C2F"))
 
 num_col_split <- 2
@@ -253,24 +248,18 @@ h <- Heatmap(matrix_prova_scale,
 #print(h)
 ```
 
-<figure>
-<img
-src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/figures/heatmap_cluster_2_TSS_gene_highly_correlated_among_increase_disease_COMMPASS_only_tumour_with_NRF1_consensus_4cell_lines_0124_cluster_col_canberra_ward.D2_rows_manhattan_ward.D2_NRF1_expr_thr5_0124.png"
-alt="Fig4d_heatmap_COMMPASS_highly_enriched_NRF1-regualted_signature" />
-<figcaption
-aria-hidden="true">Fig4d_heatmap_COMMPASS_highly_enriched_NRF1-regualted_signature</figcaption>
-</figure>
+![Fig4d_heatmap_COMMPASS_highly_enriched_NRF1-regualted_signature](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/figures/heatmap_cluster_2_TSS_gene_highly_correlated_among_increase_disease_COMMPASS_only_tumour_with_NRF1_consensus_4cell_lines_0124_cluster_col_canberra_ward.D2_rows_manhattan_ward.D2_NRF1_expr_thr5_0124.png)
 
-Store the cluster information to which each patient belongs.
 
-``` r
-output_dir <- "figures/"
-ht = draw(h)
+```{r save_heatmap, eval=FALSE,include=FALSE}
+name_file=paste0("figures/heatmap_cluster_",num_col_split,"_",prefix,"_cluster_col_",distance_col,"_",method_col,"_rows_",distance_rows,"_",method_rows,"_NRF1_expr_thr5_0124.png",sep="")
+ggexport(h,res=300,filename=name_file,width = 3000, height = 2000)
 ```
 
-![](Figure4_correct_scale_heatmap_highly_correlated_TSS_PAPER_files/figure-markdown_github/column_cluster_save-1.png)
-
-``` r
+Store the cluster information to which each patient belongs.
+```{r column_cluster_save,warning=FALSE,message=FALSE}
+output_dir <- "figures/"
+ht = draw(h)
 col_cluster <- column_order(ht)
 
 for (i in 1:num_col_split) {
@@ -283,15 +272,11 @@ for (i in 1:num_col_split) {
 }
 ```
 
-    ## Cluster 1
-    ## Cluster 2
 
-## Fig4e Barplot with number of patients to ISS for each cluster
+## Visualizing the number of patients by ISS for each cluster 
 
-Count the number of patients belonging to each disease stage for each
-cluster of the heatmap.
-
-``` r
+Count the number of patients belonging to each disease stage for each cluster of the heatmap.
+```{r iss_info_cluster_heatmap,warning=FALSE,message=FALSE}
 df_plot_iss <- data.frame()
 
 for (i in 1:num_col_split) {
@@ -303,13 +288,8 @@ for (i in 1:num_col_split) {
 }
 ```
 
-    ## Cluster 1
-    ## Cluster 2
-
-Count the number of patients at each disease stage for each cluster in
-the heatmap.
-
-``` r
+Count the number of patients at each disease stage for each cluster in the heatmap.
+```{r iss_cluster_info,warning=FALSE,message=FALSE}
 # Subset the suv info only to the ISS
 surv_stage_iss_mut_trasloc_sub <- surv_stage_iss_mut_trasloc %>%  select(Patient_ID,D_PT_iss) %>% rename(public_id=Patient_ID)
 
@@ -327,9 +307,9 @@ df_plot_count <- left_join(df_plot_count,df_tot) %>% rename(tot=n) %>%
   mutate(perc=round((num*100)/tot,2))
 ```
 
-Create a barplot.
 
-``` r
+Create a barplot.
+```{r barplot_iss, eval=FALSE,include=FALSE}
 df_plot_count$D_PT_iss <- factor(df_plot_count$D_PT_iss, levels = c("3","2","1"))
 palette <- c("#BB5A5A","#E79E85","#EACEB4")
 
@@ -340,22 +320,73 @@ barplot_iss <- ggplot(df_plot_count, aes(fill=as.factor(D_PT_iss), y=perc, x=typ
   ylab("")+xlab("Cluster groups based on gene expression")+
   theme_bw()+
   theme(panel.grid = element_blank())
-#show(barplot_iss)
+show(barplot_iss)
 ```
 
-<figure>
-<img
-src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/figures/barplot2_ISS_cluster_2_TSS_gene_highly_correlated_among_increase_disease_COMMPASS_only_tumour_with_NRF1_consensus_4cell_lines_0124_cluster_col_canberra_ward.D2_rows_manhattan_ward.D2_1023.png"
-alt="Fig4e_ISS_per_cluster" />
-<figcaption aria-hidden="true">Fig4e_ISS_per_cluster</figcaption>
-</figure>
+```{r save_surv_plot, eval=FALSE,include=FALSE}
+name_file_surv=paste0("figures/","survival_cluster_",num_col_split,"_",prefix,"_cluster_col_",distance_col,"_",method_col,"_rows_",distance_rows,"_",method_rows,"_1023.png",sep="")
+ggexport(gg_surv,res=300,filename=name_file_surv,width = 3000, height = 2000)
 
-## Fig4f Survival analysis based on patient subdivision from the heatmap
+```
 
-Obtain and customize the survival information for the patient in the
-clusters of the heatmap.
 
-``` r
+```{r prova_iss_circular, warning=FALSE,message=FALSE}
+# cluster_sel="cluster1"
+cluster_sel="cluster2"
+
+df_plot_count$D_PT_iss <- factor(df_plot_count$D_PT_iss, levels = c("3","2","1"))
+df_plot_count_C <- df_plot_count %>% filter(type==cluster_sel)
+palette <- c("#BB5A5A","#E79E85","#EACEB4")
+
+# Compute percentages
+df <- df_plot_count_C %>%
+  group_by(type) %>%
+  mutate(perc = perc / sum(perc) * 100)
+
+# Add cumulative percentage for ordering the segments in the plot
+df <- df %>%
+  arrange(D_PT_iss) %>%
+  mutate(ymax = cumsum(perc),
+         ymin = lag(ymax, default = 0))
+
+# Calculate label position
+df <- df %>%
+  mutate(labelPosition = (ymax + ymin) / 2,
+         label = paste0("ISS-", D_PT_iss, "\n", round(perc, 1), "%"))
+
+# Create the donut chart
+donut_chart <- ggplot(df, aes(ymax = ymax, ymin = ymin, xmax = 4, xmin = 3, fill = D_PT_iss)) +
+  geom_rect() +
+  coord_polar(theta = "y") +
+  xlim(c(2, 4)) +
+  #geom_text(aes(x = 3.5, y = labelPosition, label = label), size = 5, color = "white") +
+  theme_void() +
+  theme(legend.position = "right") +
+  scale_fill_manual(values =  c("#BB5A5A","#E79E85","#EACEB4")) +
+  labs(title = cluster_sel)
+
+# Display the plot
+# print(donut_chart)
+
+
+
+```
+
+
+
+
+```{r save_barplot_iss, eval=FALSE,include=FALSE}
+name_file_barplot_iss=paste0("figures/","circularPlot_ISS_",cluster_sel,"_",num_col_split,"_",prefix,"_cluster_col_",distance_col,"_",method_col,"_rows_",distance_rows,"_",method_rows,"_1023.png",sep="")
+name_file_barplot_iss=paste0("figures/","circularPlot_ISS_",cluster_sel,"_",num_col_split,"_",prefix,"_cluster_col_",distance_col,"_",method_col,"_rows_",distance_rows,"_",method_rows,"_1023_NO_LABELS.png",sep="")
+ggexport(donut_chart,res=300,filename=name_file_barplot_iss,width = 1800, height = 1800)
+```
+
+![Fig4e_ISS_per_cluster](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/figures/circularPlot_ISS_cluster1_2_TSS_gene_highly_correlated_among_increase_disease_COMMPASS_only_tumour_with_NRF1_consensus_4cell_lines_0124_cluster_col_canberra_ward.D2_rows_manhattan_ward.D2_1023.png)
+
+## Survival analysis based on patient subdivision from the heatmap 
+
+Obtain and customize the survival information for the patient in the clusters of the heatmap.
+```{r surv_analysis_prep}
 #Retrieve the needed survival info 
 surv_info <- surv_stage_iss_mut_trasloc %>% select(Patient_ID,oscdy,censos) %>% rename(public_id=Patient_ID)
 
@@ -370,14 +401,12 @@ df_surv <- df_surv %>% filter(oscdy<=65)
 ```
 
 Fit the survival model
-
-``` r
+```{r surv_analysis}
 fit <- survfit(Surv(oscdy, censos) ~ type, data = df_surv)
 ```
 
 Make the survival plot.
-
-``` r
+```{r surv_plot}
 blank_theme <- theme_bw()+ theme(panel.grid = element_blank())
 
 gg_surv <- ggsurvplot(fit,
@@ -400,20 +429,18 @@ gg_surv <- ggsurvplot(fit,
 #show(gg_surv)
 ```
 
-<figure>
-<img
-src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/figures/survival_cluster_2_TSS_gene_highly_correlated_among_increase_disease_COMMPASS_only_tumour_with_NRF1_consensus_4cell_lines_0124_cluster_col_canberra_ward.D2_rows_manhattan_ward.D2_1023.png"
-alt="Fig4f_survival_by_NRF1_expression" />
-<figcaption
-aria-hidden="true">Fig4f_survival_by_NRF1_expression</figcaption>
-</figure>
+```{r save_surv_plot_single, eval=FALSE,include=FALSE}
+name_file_surv=paste0("figures/","survival_cluster_",num_col_split,"_",prefix,"_cluster_col_",distance_col,"_",method_col,"_rows_",distance_rows,"_",method_rows,"_1023.png",sep="")
+ggexport(gg_surv,res=300,filename=name_file_surv,width = 3000, height = 2000)
 
-## Suppl_Fig4 Survival analysis at each ISS based on patient subdivision from the heatmap
+```
 
-Conduct a survival analysis and create a plot based on the patient
-subdivisions derived from the heatmap for each disease stage.
+![Fig4f_survival_by_NRF1_expression](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/figures/survival_cluster_2_TSS_gene_highly_correlated_among_increase_disease_COMMPASS_only_tumour_with_NRF1_consensus_4cell_lines_0124_cluster_col_canberra_ward.D2_rows_manhattan_ward.D2_1023.png)
 
-``` r
+## Survival analysis at each ISS based on patient subdivision from the heatmap
+
+Conduct a survival analysis and create a plot based on the patient subdivisions derived from the heatmap for each disease stage.
+```{r multi_surv_plot}
 # List to store survival plots
 splots <- list()
 # Customize surv information
@@ -439,25 +466,29 @@ for (iss in 1:3) {
                    size = 1.5,
                    palette=c("#d2d2d2","#698d85"),
                    xlab = "Months", ylab = "Probability of Survival",
-                   legend = c(0.7,0.9),
+                   #legend = c(0.7,0.9),
                    legend.title = "",
+                   legend = "none",  # Disable the legend
                    font.legend = 14,
                    font.xlab = c(14, "bold"),
                    font.ylab = c(14, "bold"),
                    risk.table.title = "N. patients at risk", risk.table.y.text = F, ggtheme = theme_pubr()) +
     ggtitle(paste0("Survival with population at ISS ", iss))
-  
+ 
+   ggexport(sp,res=300,filename=paste0(output_dir,"/survival_COMMPASS_signature_high_corr_divided_per_ISS",iss,"_0124.png"),width = 3000, height = 2000)
+
   # Add the survival plot to the list
   splots[[iss]] <- sp
 }
 re <- arrange_ggsurvplots(splots, print = TRUE,ncol = 3, nrow = 1, risk.table.height = 0.4)
 ```
 
-![](Figure4_correct_scale_heatmap_highly_correlated_TSS_PAPER_files/figure-markdown_github/multi_surv_plot-1.png)
 
-<figure>
-<img
-src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/figures/survival_COMMPASS_signature_high_corr_divided_per_ISS_0124.png"
-alt="Suppl_Fig4_survival_by_iss" />
-<figcaption aria-hidden="true">Suppl_Fig4_survival_by_iss</figcaption>
-</figure>
+```{r save_multi_plot,eval=FALSE,include=FALSE}
+# Store the plots in a unique figure
+ggsave(paste0(output_dir,"/survival_COMMPASS_signature_high_corr_divided_per_ISS_0124.png"), re, width = 20, height = 8, dpi = 600)
+```
+
+![Suppl_Fig4_survival_by_iss](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/figures/survival_COMMPASS_signature_high_corr_divided_per_ISS_0124.png)
+
+
