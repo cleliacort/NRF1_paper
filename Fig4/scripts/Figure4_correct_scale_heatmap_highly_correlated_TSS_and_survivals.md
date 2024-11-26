@@ -415,13 +415,7 @@ gg_surv <- ggsurvplot(fit,
                  font.xlab = c(14, "bold"),
                  font.ylab = c(14, "bold"),
                  risk.table.title = "N. patients at risk", risk.table.y.text = F, ggtheme = theme_pubr())
-```
 
-    ## Warning in geom_segment(aes(x = 0, y = max(y2), xend = max(x1), yend = max(y2)), : All aesthetics have length 1, but the data has 2 rows.
-    ## ℹ Please consider using `annotate()` or provide this layer with data containing
-    ##   a single row.
-
-``` r
 #show(gg_surv)
 ```
 
