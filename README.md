@@ -80,7 +80,7 @@ Rscript make_ggbarplot.r -i data/Suppl/number_of_peaks_per_sample_atac_tumour_mg
 Rscript commpass_search_for_correlated_genes_auto_PAPER.R -r data/Suppl/MMRF_CoMMpass_IA17_salmon_geneUnstranded_tpm.tsv -g data/compass_progression_10_master_list_consensus_our_chip_1123_ANNOTATED_selected_TSS_minus_plus_2kb_UP_05_wilcox_OR_ISS_pv1_3_GENE_NAME.txt -o figures -p heatmap_correlation_compass_progression_10_master_list_consensus_our_chip_1123_ANNOTATED_selected_TSS_minus_plus_2kb_UP_05_wilcox_OR_ISS_pv1_3_0124 -R 2 -C 2 -store_rc T -sub T -t UP -title "Correlation of genes increasing-UP during disease progression matching 10_master_list_consensus_our_chip_1123_ANNOTATED_selected_TSS_minus_plus_2kb_UP_05_wilcox_OR_ISS_pv1_3"
 ```
 
-[Suppl3_Multivariate_analysis](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/scripts/Suppl/Suppl3_multivariate_analysis_PAPER)
+[Suppl3_Multivariate_analysis](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/scripts/Suppl/Suppl3_multivariate_analysis_PAPER.md)
 
 **Suppl4**
 
