@@ -62,15 +62,11 @@ Rscript Fig4/scripts/commpass_for_signature_auto_ensID_2_pv1_3.R -v data/MMRF_Co
 Rscript make_ggbarplot.r -i data/Suppl/number_of_peaks_per_sample_atac_tumour_mgus_2023.txt -o figures/Suppl -p peaks_for_SI_atac_tumour_mgus_0423.png -x "Filename" -y "NumLines" -pheno data/Suppl/sample_sheet_official_clinical_2023_subsetted_PHENOTYPE.csv -y_lab "Number of peaks" -x_lab ""
 ```
 
-[PCA_analysis](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Suppl/PCA_analysis_auto_0124.R):
+**Suppl2**
 
-```r
-Rscript Fig1/scripts/Suppl/PCA_analysis_auto_0124.R -i Fig1/data/Suppl/matrix_with_multicov_atac_mgus_MAXIMUM_VALUE_0423.txt -o Fig1/figures/Suppl/ -p "PCA_master_list_tumour_of_tumour_samples.png" -pheno Fig1/data/Suppl/sample_sheet_official_clinical_2023_subsetted_PHENOTYPE.csv
-```
+[Suppl_2_CRISP_depmap_dependency](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/scripts/Suppl/Suppl2_depmap_dependency.md) 
 
-Click [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/figures/Suppl/PCA_master_list_tumour_of_tumour_samples.png) to view the resulting PCA plot.
-
-[correlation_with_hint_ATAC_Roma](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Suppl/correlation_with_hint_ATAC_Roma.md):
+[Suppl_2_NRF1_enhancer_promoter_enrichment_evaluation](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/scripts/Suppl/Suppl2_counts_enhancer_and_promoter_NRF1.md) 
 
 **Suppl4**
 
@@ -85,3 +81,13 @@ Rscript Fig4/scripts/commpass_search_for_correlated_genes_auto_PAPER.R -r data/M
 ```
 
 [Figure4def](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/scripts/Figure4_correct_scale_heatmap_highly_correlated_TSS_PAPER.md):
+
+[PCA_analysis](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Suppl/PCA_analysis_auto_0124.R):
+
+```r
+Rscript Fig1/scripts/Suppl/PCA_analysis_auto_0124.R -i Fig1/data/Suppl/matrix_with_multicov_atac_mgus_MAXIMUM_VALUE_0423.txt -o Fig1/figures/Suppl/ -p "PCA_master_list_tumour_of_tumour_samples.png" -pheno Fig1/data/Suppl/sample_sheet_official_clinical_2023_subsetted_PHENOTYPE.csv
+```
+
+Click [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/figures/Suppl/PCA_master_list_tumour_of_tumour_samples.png) to view the resulting PCA plot.
+
+[correlation_with_hint_ATAC_Roma](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Suppl/correlation_with_hint_ATAC_Roma.md):
