@@ -4,10 +4,6 @@ This repository contains the code for analyzing data and generating figures in "
 
 The scripts for reproducing the work are organized by figure. The raw data used to generate the plots will soon be available on the GEO website. Please email me if you need access to specific processed datasets. 
 
-COMMPASS DISCLOSURE 
-
-NILSON DISCLOSURE - mettili alla fine 
-
 **Figure 1. Epigenetic profiling of NRF1 reveals NRF1 as a binder of highly penetrant loci**
 
 [Fig1b_dataset_description](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Figure1b_dataset_pheno_description.md): 
@@ -88,17 +84,7 @@ Rscript commpass_search_for_correlated_genes_auto_PAPER.R -r data/Suppl/MMRF_CoM
 Rscript make_ggbarplot.r -i data/Suppl/number_of_peaks_per_sample_atac_tumour_mgus_2023_MGUS.txt -o figures -p barplot_num_peaks_MGUS_2023_sel -x "Filename" -y "NumLines" -pheno data/Suppl/sample_sheet_MGUS_PHENOTYPE.txt -y_lab "Number of peaks" -x_lab ""
 ```
 
-**Suppl4**
-
-[Fig4c_commpass_search_for_correlated_genes](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/scripts/Figure4d_correct_scale_heatmap_highly_correlated_TSS_PAPER.Rmd):
-
-The R script was executed with the following parameters, and the resulting plot can be found [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/figures/heatmap_correlation_compass_progression_10_master_list_consensus_our_chip_1123_ANNOTATED_selected_TSS_minus_plus_2kb_UP_05_wilcox_OR_ISS_pv1_3_0124_manhattan_ward.D_manhattan_ward.D.png)
-
-```bash
-Rscript Fig4/scripts/commpass_search_for_correlated_genes_auto_PAPER.R -r data/MMRF_CoMMpass_IA17_salmon_geneUnstranded_tpm.tsv -g data/compass_progression_10_master_list_consensus_our_chip_1123_ANNOTATED_selected_TSS_minus_plus_2kb_UP_05_wilcox_OR_ISS_pv1_3_GENE_NAME.txt -o figures -p heatmap_correlation_compass_progression_10_master_list_consensus_our_chip_1123_ANNOTATED_selected_TSS_minus_plus_2kb_UP_05_wilcox_OR_ISS_pv1_3_0124 -R 2 -C 2 -store_rc T -sub T -t UP -title "Correlation of genes increasing-UP during disease progression matching 10_master_list_consensus_our_chip_1123_ANNOTATED_selected_TSS_minus_plus_2kb_UP_05_wilcox_OR_ISS_pv1_3"
-```
-
-[Figure4def](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/scripts/Figure4_correct_scale_heatmap_highly_correlated_TSS_PAPER.md):
+SISTEMARE E CAPIRE 
 
 [PCA_analysis](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Suppl/PCA_analysis_auto_0124.R):
 
@@ -108,4 +94,5 @@ Rscript Fig1/scripts/Suppl/PCA_analysis_auto_0124.R -i Fig1/data/Suppl/matrix_wi
 
 Click [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/figures/Suppl/PCA_master_list_tumour_of_tumour_samples.png) to view the resulting PCA plot.
 
-[correlation_with_hint_ATAC_Roma](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Suppl/correlation_with_hint_ATAC_Roma.md):
+> **Acknowledgment**: For specific analyses we used data with controlled access from [Ajore, R. *et al.* 2022](https://www.nature.com/articles/s41467-021-27666-x#data-availability) and data generated as part of the Multiple Myeloma Research Foundation Personalized Medicine Initiatives ([https://research.themmrf.org](https://research.themmrf.org/) and [www.themmrf.org](http://www.themmrf.org/))
+>
