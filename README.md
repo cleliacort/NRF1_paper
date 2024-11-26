@@ -82,6 +82,12 @@ Rscript commpass_search_for_correlated_genes_auto_PAPER.R -r data/Suppl/MMRF_CoM
 
 [Suppl3_Multivariate_analysis](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/scripts/Suppl/Suppl3_multivariate_analysis_PAPER.md)
 
+[Suppl3_make_ggbarplot_MGUS_peaks_per_patient](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Suppl/Suppl_1b_make_ggbarplot.R): the R script was executed with the following parameters and the resulting plot can be found [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/figures/Suppl/barplot_num_peaks_MGUS_2023_sel.png)
+
+```r
+Rscript make_ggbarplot.r -i data/Suppl/number_of_peaks_per_sample_atac_tumour_mgus_2023_MGUS.txt -o figures -p barplot_num_peaks_MGUS_2023_sel -x "Filename" -y "NumLines" -pheno data/Suppl/sample_sheet_MGUS_PHENOTYPE.txt -y_lab "Number of peaks" -x_lab ""
+```
+
 **Suppl4**
 
 [Fig4c_commpass_search_for_correlated_genes](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/scripts/Figure4d_correct_scale_heatmap_highly_correlated_TSS_PAPER.Rmd):
