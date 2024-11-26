@@ -84,15 +84,11 @@ Rscript commpass_search_for_correlated_genes_auto_PAPER.R -r data/Suppl/MMRF_CoM
 Rscript make_ggbarplot.r -i data/Suppl/number_of_peaks_per_sample_atac_tumour_mgus_2023_MGUS.txt -o figures -p barplot_num_peaks_MGUS_2023_sel -x "Filename" -y "NumLines" -pheno data/Suppl/sample_sheet_MGUS_PHENOTYPE.txt -y_lab "Number of peaks" -x_lab ""
 ```
 
-SISTEMARE E CAPIRE 
-
-[PCA_analysis](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Suppl/PCA_analysis_auto_0124.R):
+[Suppl3_PCA_analysis_tumour_plus_mgus](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/scripts/Suppl/PCA_analysis_auto_0124.R): the R script was executed with the following parameters and the resulting plot can be found [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/figures/Suppl/PCA_mgus_plus_tumour_treated_plus_tumour_onset_1224.png)
 
 ```r
-Rscript Fig1/scripts/Suppl/PCA_analysis_auto_0124.R -i Fig1/data/Suppl/matrix_with_multicov_atac_mgus_MAXIMUM_VALUE_0423.txt -o Fig1/figures/Suppl/ -p "PCA_master_list_tumour_of_tumour_samples.png" -pheno Fig1/data/Suppl/sample_sheet_official_clinical_2023_subsetted_PHENOTYPE.csv
+Rscript PCA_analysis_auto_0124.R -i data/Suppl/matrix_multicov_tumout_and_MGUS_on_tumour_master_list_0124.txt -o figures/Suppl -p "PCA_mgus_plus_tumour_treated_plus_tumour_onset_1224.png" -pheno data/Suppl/sample_sheet_clinical_PHENOTYPE_tumour_and_mgus_0124.txt -labels FALSE 
 ```
-
-Click [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/figures/Suppl/PCA_master_list_tumour_of_tumour_samples.png) to view the resulting PCA plot.
 
 > **Acknowledgment**: For specific analyses we used data with controlled access from [Ajore, R. *et al.* 2022](https://www.nature.com/articles/s41467-021-27666-x#data-availability) and data generated as part of the Multiple Myeloma Research Foundation Personalized Medicine Initiatives ([https://research.themmrf.org](https://research.themmrf.org/) and [www.themmrf.org](http://www.themmrf.org/))
 >
