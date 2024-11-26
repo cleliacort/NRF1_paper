@@ -4,6 +4,10 @@ This repository contains the code for analyzing data and generating figures in "
 
 The scripts for reproducing the work are organized by figure. The raw data used to generate the plots will soon be available on the GEO website. Please email me if you need access to specific processed datasets. 
 
+COMMPASS DISCLOSURE 
+
+NILSON DISCLOSURE - mettili alla fine 
+
 **Figure 1. Epigenetic profiling of NRF1 reveals NRF1 as a binder of highly penetrant loci**
 
 [Fig1b_dataset_description](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Figure1b_dataset_pheno_description.md): 
@@ -68,9 +72,17 @@ Rscript make_ggbarplot.r -i data/Suppl/number_of_peaks_per_sample_atac_tumour_mg
 
 [Suppl_2_NRF1_enhancer_promoter_enrichment_evaluation](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/scripts/Suppl/Suppl2_counts_enhancer_and_promoter_NRF1.md) 
 
-**Suppl4**
+**Suppl3**
 
-[Multivariate_analysis](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/scripts/Suppl/multivariate_analysis_PAPER.md):
+[Suppl_3_detect_correlated_target_gene_from_COMMPASS](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/scripts/Suppl/commpass_search_for_correlated_genes_auto_PAPER.R): the R script was executed with the following parameters and the resulting plot can be found [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/figures/Suppl/heatmap_correlation_compass_progression_10_master_list_consensus_our_chip_1123_ANNOTATED_selected_TSS_minus_plus_2kb_UP_05_wilcox_OR_ISS_pv1_3_0124_manhattan_ward.D_manhattan_ward.D.png)
+
+```r
+Rscript commpass_search_for_correlated_genes_auto_PAPER.R -r data/Suppl/MMRF_CoMMpass_IA17_salmon_geneUnstranded_tpm.tsv -g data/compass_progression_10_master_list_consensus_our_chip_1123_ANNOTATED_selected_TSS_minus_plus_2kb_UP_05_wilcox_OR_ISS_pv1_3_GENE_NAME.txt -o figures -p heatmap_correlation_compass_progression_10_master_list_consensus_our_chip_1123_ANNOTATED_selected_TSS_minus_plus_2kb_UP_05_wilcox_OR_ISS_pv1_3_0124 -R 2 -C 2 -store_rc T -sub T -t UP -title "Correlation of genes increasing-UP during disease progression matching 10_master_list_consensus_our_chip_1123_ANNOTATED_selected_TSS_minus_plus_2kb_UP_05_wilcox_OR_ISS_pv1_3"
+```
+
+[Suppl3_Multivariate_analysis](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/scripts/Suppl/Suppl3_multivariate_analysis_PAPER)
+
+**Suppl4**
 
 [Fig4c_commpass_search_for_correlated_genes](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/scripts/Figure4d_correct_scale_heatmap_highly_correlated_TSS_PAPER.Rmd):
 
