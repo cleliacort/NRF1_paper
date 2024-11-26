@@ -1,10 +1,8 @@
 # README
 
-This repository houses the code used for the analysis and creation of figures in "TITLE".
+This repository contains the code for analyzing data and generating figures in "**Nuclear Respiratory Factor 1 (NRF1) sustains the development, progression and resistance of Multiple Myeloma**."
 
-https://github.com/cleliacort/NRF1_paper/blob/main/
-
-Considering to run all the script from a project located in the paper directory.
+The scripts for reproducing the work are organized by figure. The raw data used to generate the plots will soon be available on the GEO website. Please email me if you need access to specific processed datasets. 
 
 **Figure 1. Epigenetic profiling of NRF1 reveals NRF1 as a binder of highly penetrant loci**
 

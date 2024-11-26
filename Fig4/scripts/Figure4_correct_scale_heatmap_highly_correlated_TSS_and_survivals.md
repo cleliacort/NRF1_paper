@@ -1,5 +1,3 @@
-# Figure4_correct_scale_heatmap_highly_correlated_TSS_and_survivals
-
 Upload the needed packages.
 
 ``` r
@@ -327,7 +325,7 @@ df_plot_count <- left_join(df_plot_count,df_tot) %>% rename(tot=n) %>%
   mutate(perc=round((num*100)/tot,2))
 ```
 
-Create a barplot.
+Create donut plots.
 
 ``` r
 # cluster_sel="cluster1"
@@ -368,12 +366,8 @@ donut_chart <- ggplot(df, aes(ymax = ymax, ymin = ymin, xmax = 4, xmin = 3, fill
 # print(donut_chart)
 ```
 
-<figure>
-<img
-src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/figures/circularPlot_ISS_cluster1_2_TSS_gene_highly_correlated_among_increase_disease_COMMPASS_only_tumour_with_NRF1_consensus_4cell_lines_0124_cluster_col_canberra_ward.D2_rows_manhattan_ward.D2_1023.png"
-alt="Fig4e_ISS_per_cluster" />
-<figcaption aria-hidden="true">Fig4e_ISS_per_cluster</figcaption>
-</figure>
+![Fig4_ISS_per_cluster1](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/figures/circularPlot_ISS_cluster1_2_TSS_gene_highly_correlated_among_increase_disease_COMMPASS_only_tumour_with_NRF1_consensus_4cell_lines_0124_cluster_col_canberra_ward.D2_rows_manhattan_ward.D2_1023.png)
+![Fig4_ISS_per_cluster2](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/figures/circularPlot_ISS_cluster2_2_TSS_gene_highly_correlated_among_increase_disease_COMMPASS_only_tumour_with_NRF1_consensus_4cell_lines_0124_cluster_col_canberra_ward.D2_rows_manhattan_ward.D2_1023.png)
 
 ## Survival analysis based on patient subdivision from the heatmap
 
@@ -434,9 +428,9 @@ gg_surv <- ggsurvplot(fit,
 <figure>
 <img
 src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/figures/survival_cluster_2_TSS_gene_highly_correlated_among_increase_disease_COMMPASS_only_tumour_with_NRF1_consensus_4cell_lines_0124_cluster_col_canberra_ward.D2_rows_manhattan_ward.D2_1023.png"
-alt="Fig4f_survival_by_NRF1_expression" />
+alt="Fig4f_survival_by_NRF1_gene_regulated_signature" />
 <figcaption
-aria-hidden="true">Fig4f_survival_by_NRF1_expression</figcaption>
+aria-hidden="true">Fig4f_survival_by_NRF1_gene_regulated_signature</figcaption>
 </figure>
 
 ## Survival analysis at each ISS based on patient subdivision from the heatmap
@@ -484,68 +478,14 @@ for (iss in 1:3) {
   # Add the survival plot to the list
   splots[[iss]] <- sp
 }
-```
-
-    ## file saved to figures//survival_COMMPASS_signature_high_corr_divided_per_ISS1_0124.png
-
-    ## Warning in geom_segment(aes(x = 0, y = max(y2), xend = max(x1), yend = max(y2)), : All aesthetics have length 1, but the data has 2 rows.
-    ## ℹ Please consider using `annotate()` or provide this layer with data containing
-    ##   a single row.
-    ## All aesthetics have length 1, but the data has 2 rows.
-    ## ℹ Please consider using `annotate()` or provide this layer with data containing
-    ##   a single row.
-    ## All aesthetics have length 1, but the data has 2 rows.
-    ## ℹ Please consider using `annotate()` or provide this layer with data containing
-    ##   a single row.
-    ## All aesthetics have length 1, but the data has 2 rows.
-    ## ℹ Please consider using `annotate()` or provide this layer with data containing
-    ##   a single row.
-
-    ## file saved to figures//survival_COMMPASS_signature_high_corr_divided_per_ISS2_0124.png
-
-    ## Warning in geom_segment(aes(x = 0, y = max(y2), xend = max(x1), yend = max(y2)), : All aesthetics have length 1, but the data has 2 rows.
-    ## ℹ Please consider using `annotate()` or provide this layer with data containing
-    ##   a single row.
-    ## All aesthetics have length 1, but the data has 2 rows.
-    ## ℹ Please consider using `annotate()` or provide this layer with data containing
-    ##   a single row.
-    ## All aesthetics have length 1, but the data has 2 rows.
-    ## ℹ Please consider using `annotate()` or provide this layer with data containing
-    ##   a single row.
-    ## All aesthetics have length 1, but the data has 2 rows.
-    ## ℹ Please consider using `annotate()` or provide this layer with data containing
-    ##   a single row.
-
-    ## file saved to figures//survival_COMMPASS_signature_high_corr_divided_per_ISS3_0124.png
-
-``` r
 re <- arrange_ggsurvplots(splots, print = TRUE,ncol = 3, nrow = 1, risk.table.height = 0.4)
 ```
-
-    ## Warning in geom_segment(aes(x = 0, y = max(y2), xend = max(x1), yend = max(y2)), : All aesthetics have length 1, but the data has 2 rows.
-    ## ℹ Please consider using `annotate()` or provide this layer with data containing
-    ##   a single row.
-    ## All aesthetics have length 1, but the data has 2 rows.
-    ## ℹ Please consider using `annotate()` or provide this layer with data containing
-    ##   a single row.
-    ## All aesthetics have length 1, but the data has 2 rows.
-    ## ℹ Please consider using `annotate()` or provide this layer with data containing
-    ##   a single row.
-    ## All aesthetics have length 1, but the data has 2 rows.
-    ## ℹ Please consider using `annotate()` or provide this layer with data containing
-    ##   a single row.
-    ## All aesthetics have length 1, but the data has 2 rows.
-    ## ℹ Please consider using `annotate()` or provide this layer with data containing
-    ##   a single row.
-    ## All aesthetics have length 1, but the data has 2 rows.
-    ## ℹ Please consider using `annotate()` or provide this layer with data containing
-    ##   a single row.
 
 ![](Figure4_correct_scale_heatmap_highly_correlated_TSS_and_survivals_files/figure-markdown_github/multi_surv_plot-1.png)
 
 <figure>
 <img
 src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/figures/survival_COMMPASS_signature_high_corr_divided_per_ISS_0124.png"
-alt="Suppl_Fig4_survival_by_iss" />
-<figcaption aria-hidden="true">Suppl_Fig4_survival_by_iss</figcaption>
+alt="Fig4_survival_by_iss" />
+<figcaption aria-hidden="true">Fig4_survival_by_iss</figcaption>
 </figure>
