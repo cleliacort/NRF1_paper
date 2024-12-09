@@ -1,6 +1,6 @@
 # README
 
-`[![DOI](https://zenodo.org/badge/754646203.svg)](https://doi.org/10.5281/zenodo.14330213)`
+[![DOI](https://zenodo.org/badge/754646203.svg)](https://doi.org/10.5281/zenodo.14330213)
 
 This repository contains the code for analyzing data and generating figures in "**Nuclear Respiratory Factor 1 (NRF1) sustains the development, progression and resistance of Multiple Myeloma**."
 
