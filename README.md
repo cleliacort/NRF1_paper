@@ -94,9 +94,9 @@ Rscript commpass_search_for_correlated_genes_auto_PAPER.R -r data/Suppl/MMRF_CoM
 
 ## Suppl5
 
-[Suppl_5a_right_commpass_heatmap_nature_BROYL_signatures](https://github.com/cleliacort/NRF1_paper/blob/main/Fig5/scripts/Suppl/Suppl_5a_right_commpass_heatmap_nature_genetics_BROYL_HEATMAP_09april25.md)
-
 [Suppl_5a_left_commpass_heatmap_nature_ZHAN_signatures](https://github.com/cleliacort/NRF1_paper/blob/main/Fig5/scripts/Suppl/Suppl_5a_left_commpass_heatmap_nature_genetics_ZHAN_HEATMAP_09april25.md)
+
+[Suppl_5a_right_commpass_heatmap_nature_BROYL_signatures](https://github.com/cleliacort/NRF1_paper/blob/main/Fig5/scripts/Suppl/Suppl_5a_right_commpass_heatmap_nature_genetics_BROYL_HEATMAP_09april25.md)
 
 [Suppl_5b_contingency_chisquare_genetics](https://github.com/cleliacort/NRF1_paper/blob/main/Fig5/scripts/Suppl/Suppl_5b_contingency_chisquare_genetics.md)
 
