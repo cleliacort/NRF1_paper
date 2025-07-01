@@ -1,3 +1,5 @@
+# Fig3d_heatmap_tumour_mgus
+
 Upload the needed packages.
 
 ``` r
@@ -158,6 +160,6 @@ h <- ComplexHeatmap::Heatmap(scaled_matrix,
 <figure>
 <img
 src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/figures/heatmap_tot_cluster_2_normalized_scaled_1111_chip_nrf1_kms27_chip_nrf1_mm196_chip_nrf1_mm217_chip_nrf1_kms18_1223_cluster_col_euclidean_ward.D_rows_no_clustering_1223.png"
-alt="Fig3_heatmap_tumour_mgus" />
-<figcaption aria-hidden="true">Fig3_heatmap_tumour_mgus</figcaption>
+alt="Fig3d_heatmap_tumour_mgus" />
+<figcaption aria-hidden="true">Fig3d_heatmap_tumour_mgus</figcaption>
 </figure>
