@@ -1,3 +1,4 @@
+# Suppl_2g_counts_enhancer_and_promoter_NRF1
 Upload the needed packages.
 
 ``` r
@@ -88,9 +89,9 @@ p <- ggpar(p,ylim=c(0,200))+border()
 <figure>
 <img
 src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/figures/Suppl/NRF1_enrichment_ONSET_TREATED_0724_cpm_tmm_correct_ENHANCER.png"
-alt="Suppl2_NRF1_enrichment_ONSET_TREATED_enhancer" />
+alt="Suppl_2g_NRF1_enrichment_ONSET_TREATED_enhancer" />
 <figcaption
-aria-hidden="true">Suppl2_NRF1_enrichment_ONSET_TREATED_enhancer</figcaption>
+aria-hidden="true">Suppl_2g_NRF1_enrichment_ONSET_TREATED_enhancer</figcaption>
 </figure>
 
 Make the plot related to the NRF1 promoter.
@@ -120,7 +121,7 @@ p <- ggpar(p,ylim=c(0,200))+border()
 <figure>
 <img
 src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/figures/Suppl/NRF1_enrichment_ONSET_TREATED_0724_cpm_tmm_correct_PROMOTER.png"
-alt="Suppl2_NRF1_enrichment_ONSET_TREATED_promoter" />
+alt="Suppl_2g_NRF1_enrichment_ONSET_TREATED_promoter" />
 <figcaption
-aria-hidden="true">Suppl2_NRF1_enrichment_ONSET_TREATED_promoter</figcaption>
+aria-hidden="true">Suppl_2g_NRF1_enrichment_ONSET_TREATED_promoter</figcaption>
 </figure>
