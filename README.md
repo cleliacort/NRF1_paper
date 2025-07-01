@@ -2,9 +2,9 @@
 
 [![DOI](https://zenodo.org/badge/754646203.svg)](https://doi.org/10.5281/zenodo.14330213)
 
-This repository contains the code for analyzing data and generating figures in "**Nuclear Respiratory Factor 1 (NRF1) sustains the development, progression and resistance of Multiple Myeloma**."
+This repository contains the code used for data analysis and figure generation in the study titled "**Nuclear Respiratory Factor 1 (NRF1) promotes cell survival in Multiple Myeloma under proteasome inhibition therapy.**"
 
-The scripts for reproducing the work are organized by figure. The raw data used to generate the plots will soon be available on the GEO website. Please email me if you need access to specific processed datasets. 
+The scripts are organized by figure to facilitate reproducibility of the results. Raw data supporting the figures will be made publicly available on the GEO database. If you require access to specific processed datasets, please feel free to contact me via email.
 
 ## **Figure 1**
 
