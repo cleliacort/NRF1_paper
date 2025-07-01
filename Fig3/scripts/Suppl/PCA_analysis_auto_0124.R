@@ -1,7 +1,12 @@
-# DESCRIPTION: Make a quick PCA analysis by using a matrix and a phenotype file 
-# INPUT: the matrix have in the first 3 rows chromosome start end information and then each column is a sample;
-# PHENOTYPE: the file with phenotype must have a colum calle "ID" with the sample name equal to the one found in the matrix and a column called "phenotype" with the phenotype information;
-# USAGE: 
+# DESCRIPTION:
+#   Perform a Principal Component Analysis (PCA) using a data matrix and a phenotype file.
+#
+# INPUT:
+#   - Data matrix: The first three rows contain 'chromosome', 'start', and 'end' information.
+#                  Each subsequent column represents a sample.
+#
+#   - Phenotype file: Must contain a column named 'ID' (matching sample names in the matrix)
+#                     and a column named 'phenotype' with phenotype information for each sample.
 #-----------------------------
 # Upload packages
 suppressPackageStartupMessages(library(argparse))
