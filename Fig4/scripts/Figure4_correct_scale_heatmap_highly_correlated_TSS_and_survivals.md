@@ -22,7 +22,6 @@ Reading the COMMPASS IA17 tpm file.
 
 ``` r
 prefix="TSS_gene_highly_correlated_among_increase_disease_COMMPASS_only_tumour_with_NRF1_consensus_4cell_lines_0124"
-
 tpm <- "data/MMRF_CoMMpass_IA17_salmon_geneUnstranded_tpm.tsv"
 matrix_orig <- read.table(tpm, header = TRUE, row.names = 1) 
 matrix_mod <- matrix_orig %>% distinct() %>% rownames_to_column(var="ensembl_gene_id")
@@ -97,7 +96,29 @@ dataframe.
 surv_stage_iss_mut_trasloc <- merge(surv_stage_iss,mut_and_trasloc,by.x = "Patient_ID", by.y = "SAMPLE")
 
 # Filter out patient that do not have ISS info
-surv_stage_iss_mut_trasloc <- surv_stage_iss_mut_trasloc %>% filter(!is.na(D_PT_iss))
+surv_stage_iss_mut_trasloc <- surv_stage_iss_mut_trasloc %>% filter(!is.na(D_PT_iss)) %>% separate(Specimen_ID,c("Visit_ID"),sep="_BM")
+```
+
+    ## Warning: Expected 1 pieces. Additional pieces discarded in 640 rows [1, 2, 3, 4, 5, 6,
+    ## 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, ...].
+
+``` r
+genetic_NEW_INFO <- read_delim("data/genetic_NEW_INFO_added_to_those_used_in_our_paper_03APRILE.txt", 
+    delim = "\t", escape_double = FALSE, 
+    trim_ws = TRUE) %>% select(-traslocationNSD2_CALL,-traslocationCCND3_CALL, -traslocationMYC_CALL,-traslocationMAFA_CALL,-traslocationCCND1_CALL,-traslocationCCND2_CALL,-traslocationMAF_CALL,-traslocationMAFB_CALL)
+```
+
+    ## Rows: 638 Columns: 19
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: "\t"
+    ## chr  (5): Visit_ID, patient_id, plusplus15_INFO, MYC_STR, PR_index
+    ## dbl (14): Prolif_Index, del_1p22_manual_Call, gain_1q21_manual_Call, del_13q...
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
+surv_stage_iss_mut_trasloc_genet <- merge(surv_stage_iss_mut_trasloc,genetic_NEW_INFO,by="Visit_ID")
 ```
 
 Define patient groups based on the expression of the NRF1 gene and add
@@ -158,17 +179,20 @@ colAnn <- HeatmapAnnotation(
   LTB_mut = pheno_order$mutationLTB,
   
   #TRASLOCATION
-  trasl_myc =pheno_order$traslocationMYC_CALL,
-  trasl_ccnd3=pheno_order$traslocationCCND3_CALL,
-  trasl_mafa=pheno_order$traslocationMAFA_CALL,
-  trasl_ccnd1=pheno_order$traslocationCCND1_CALL,
-  trasl_maf=pheno_order$traslocationMAF_CALL,
+  trasl_ccnd1_t11_14 = pheno_order$traslocationCCND1_CALL,
+  trasl_ccnd2 = pheno_order$traslocationCCND2_CALL,
+  trasl_ccnd3 = pheno_order$traslocationCCND3_CALL,
+  trasl_maf_t14_16 = pheno_order$traslocationMAF_CALL,
+  trasl_mafa_t8_14 = pheno_order$traslocationMAFA_CALL,
+  trasl_mafb_t14_20 = pheno_order$traslocationMAFB_CALL,
+  trasl_nsd2_t4_14 = pheno_order$traslocationNSD2_CALL,
+  trasl_myc = pheno_order$traslocationMYC_CALL,
 
   NRF1_expr_median=pheno_order$status_5thr,
   
   col = list(
     iss_stage = c("1"="#EACEB4","2" = "#E79E85", "3"="#BB5A5A"),
-    #MUT
+    
     TP53_mut = c("1"="#555555FF", "0"="#E2E2E2FF"),
     BRAF_mut = c("1"="#555555FF", "0"="#E2E2E2FF"),
     FGFR3_mut = c("1"="#555555FF", "0"="#E2E2E2FF"),
@@ -177,36 +201,21 @@ colAnn <- HeatmapAnnotation(
     KRAS_mut = c("1"="#555555FF", "0"="#E2E2E2FF"),
     HIST1H1E_mut = c("1"="#555555FF", "0"="#E2E2E2FF"),
     LTB_mut = c("1"="#555555FF", "0"="#E2E2E2FF"),
-    #TRASLOCATION
-    trasl_myc = c("1"="#555555FF", "0"="#E2E2E2FF"),
-    trasl_ccnd3 = c("1"="#555555FF", "0"="#E2E2E2FF"),
-    trasl_mafa = c("1"="#555555FF", "0"="#E2E2E2FF"),
-    trasl_ccnd1 = c("1"="#555555FF", "0"="#E2E2E2FF"),
-    trasl_maf = c("1"="#555555FF", "0"="#E2E2E2FF"),
+
+    NRF1_expr_median=c("high"="#3e6f64","high_medium"="#658C83","medium"="#8BA9A2","low_medium"="#B2C5C1","low"="#D8E2E0"),
     
-    NRF1_expr_median=c("high"="#3e6f64","high_medium"="#658C83","medium"="#8BA9A2","low_medium"="#B2C5C1","low"="#D8E2E0")
+    trasl_ccnd1_t11_14 = c("1"="#145A76FF", "0"="#E2E2E2FF"),
+    trasl_ccnd2 = c("1"="#145A76FF", "0"="#E2E2E2FF"),
+    trasl_ccnd3 = c("1"="#145A76FF", "0"="#E2E2E2FF"),
+    trasl_nsd2_t4_14 = c("1"="#145A76FF", "0"="#E2E2E2FF"),
+    trasl_maf_t14_16 = c("1"="#145A76FF", "0"="#E2E2E2FF"),
+    trasl_mafa_t8_14 = c("1"="#145A76FF", "0"="#E2E2E2FF"),
+    trasl_mafb_t14_20 = c("1"="#145A76FF", "0"="#E2E2E2FF"),
+    trasl_myc = c("1"="#145A76FF", "0"="#E2E2E2FF")
     ),  
 
   simple_anno_size = unit(0.3, "cm"),
-  annotation_label = c(
-    "iss_stage",
-    
-    "TP53_mut",
-    "BRAF_mut",
-    "FGFR3_mut",
-    "DIS3_mut",
-    "ATM_mut",
-    "KRAS_mut",
-    "HIST1H1E_mut",
-    "LTB_mut",
-    
-    "trasl_myc",
-    "trasl_ccnd3",
-    "trasl_mafa",
-    "trasl_ccnd1",
-    "trasl_maf",
-    "NRF1_expr_median"),
-  show_legend = c(TRUE, F,F,F,F,F,F,F,F,F,F,F,F,F,T),
+  show_legend = c(F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F),
   annotation_name_gp= gpar(fontsize = 7)
 )
 ```
@@ -215,12 +224,9 @@ Create the heatmap
 
 ``` r
 mycols <- colorRamp2(c(-2,-1,0,1,2) ,c("#27374D","#b3bdcc","#FFFFFF","#e9b597","#D36C2F"))
-
 num_col_split <- 2
-
 distance_rows <- "manhattan"
 method_rows <- "ward.D2"
-
 distance_col <- "canberra"
 method_col <- "ward.D2"
 
@@ -248,12 +254,15 @@ h <- Heatmap(matrix_prova_scale,
              cluster_columns = T,
              cluster_rows=T
 )
-#print(h)
+
+show(h)
 ```
+
+![](Figure4_correct_scale_heatmap_highly_correlated_TSS_and_survivals_files/figure-markdown_github/make_heatmap-1.png)
 
 <figure>
 <img
-src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/figures/heatmap_cluster_2_TSS_gene_highly_correlated_among_increase_disease_COMMPASS_only_tumour_with_NRF1_consensus_4cell_lines_0124_cluster_col_canberra_ward.D2_rows_manhattan_ward.D2_NRF1_expr_thr5_0124.png"
+src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/figures/heatmap_cluster_2_TSS_gene_highly_correlated_among_increase_disease_COMMPASS_only_tumour_with_NRF1_consensus_4cell_lines_0124_cluster_col_canberra_ward.D2_rows_manhattan_ward.D2_NRF1_expr_thr5_8MUT_8TRASL_14APRIL.png"
 alt="Fig4d_heatmap_COMMPASS_highly_enriched_NRF1-regualted_signature" />
 <figcaption
 aria-hidden="true">Fig4d_heatmap_COMMPASS_highly_enriched_NRF1-regualted_signature</figcaption>
@@ -262,7 +271,7 @@ aria-hidden="true">Fig4d_heatmap_COMMPASS_highly_enriched_NRF1-regualted_signatu
 Store the cluster information to which each patient belongs.
 
 ``` r
-output_dir <- "figures/"
+output_dir <- "data/"
 ht = draw(h)
 ```
 
@@ -277,7 +286,7 @@ for (i in 1:num_col_split) {
   c <- matrix_prova_scale[,col_cluster[[i]]]
   c_name <- data_frame(public_id=colnames(c)) 
   file_path <- file.path(output_dir, paste0("cluster_motif_", i,"_CLUSTERS_TOT_",num_col_split,"_",prefix,"_cluster_col_",distance_col,"_",method_col,"_rows_",distance_rows,"_",method_rows,"_0124.txt"))
-  #write.table(c_name,file_path, sep="\t", quote=F, row.names=F,col.names = FALSE)
+  write.table(c_name,file_path, sep="\t", quote=F, row.names=F,col.names = FALSE)
 }
 ```
 
