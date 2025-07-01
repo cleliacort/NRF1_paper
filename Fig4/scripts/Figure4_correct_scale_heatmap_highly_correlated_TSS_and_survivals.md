@@ -99,25 +99,11 @@ surv_stage_iss_mut_trasloc <- merge(surv_stage_iss,mut_and_trasloc,by.x = "Patie
 surv_stage_iss_mut_trasloc <- surv_stage_iss_mut_trasloc %>% filter(!is.na(D_PT_iss)) %>% separate(Specimen_ID,c("Visit_ID"),sep="_BM")
 ```
 
-    ## Warning: Expected 1 pieces. Additional pieces discarded in 640 rows [1, 2, 3, 4, 5, 6,
-    ## 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, ...].
-
 ``` r
 genetic_NEW_INFO <- read_delim("data/genetic_NEW_INFO_added_to_those_used_in_our_paper_03APRILE.txt", 
     delim = "\t", escape_double = FALSE, 
     trim_ws = TRUE) %>% select(-traslocationNSD2_CALL,-traslocationCCND3_CALL, -traslocationMYC_CALL,-traslocationMAFA_CALL,-traslocationCCND1_CALL,-traslocationCCND2_CALL,-traslocationMAF_CALL,-traslocationMAFB_CALL)
-```
 
-    ## Rows: 638 Columns: 19
-    ## ── Column specification ────────────────────────────────────────────────────────
-    ## Delimiter: "\t"
-    ## chr  (5): Visit_ID, patient_id, plusplus15_INFO, MYC_STR, PR_index
-    ## dbl (14): Prolif_Index, del_1p22_manual_Call, gain_1q21_manual_Call, del_13q...
-    ## 
-    ## ℹ Use `spec()` to retrieve the full column specification for this data.
-    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-
-``` r
 surv_stage_iss_mut_trasloc_genet <- merge(surv_stage_iss_mut_trasloc,genetic_NEW_INFO,by="Visit_ID")
 ```
 
@@ -254,18 +240,14 @@ h <- Heatmap(matrix_prova_scale,
              cluster_columns = T,
              cluster_rows=T
 )
-
-show(h)
 ```
-
-![](Figure4_correct_scale_heatmap_highly_correlated_TSS_and_survivals_files/figure-markdown_github/make_heatmap-1.png)
 
 <figure>
 <img
 src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/figures/heatmap_cluster_2_TSS_gene_highly_correlated_among_increase_disease_COMMPASS_only_tumour_with_NRF1_consensus_4cell_lines_0124_cluster_col_canberra_ward.D2_rows_manhattan_ward.D2_NRF1_expr_thr5_8MUT_8TRASL_14APRIL.png"
-alt="Fig4d_heatmap_COMMPASS_highly_enriched_NRF1-regualted_signature" />
+alt="Fig4e_heatmap_COMMPASS_highly_enriched_NRF1-regualted_signature" />
 <figcaption
-aria-hidden="true">Fig4d_heatmap_COMMPASS_highly_enriched_NRF1-regualted_signature</figcaption>
+aria-hidden="true">Fig4e_heatmap_COMMPASS_highly_enriched_NRF1-regualted_signature</figcaption>
 </figure>
 
 Store the cluster information to which each patient belongs.
@@ -375,8 +357,8 @@ donut_chart <- ggplot(df, aes(ymax = ymax, ymin = ymin, xmax = 4, xmin = 3, fill
 # print(donut_chart)
 ```
 
-![Fig4_ISS_per_cluster1](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/figures/circularPlot_ISS_cluster1_2_TSS_gene_highly_correlated_among_increase_disease_COMMPASS_only_tumour_with_NRF1_consensus_4cell_lines_0124_cluster_col_canberra_ward.D2_rows_manhattan_ward.D2_1023.png)
-![Fig4_ISS_per_cluster2](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/figures/circularPlot_ISS_cluster2_2_TSS_gene_highly_correlated_among_increase_disease_COMMPASS_only_tumour_with_NRF1_consensus_4cell_lines_0124_cluster_col_canberra_ward.D2_rows_manhattan_ward.D2_1023.png)
+![Fig4f_ISS_per_cluster1](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/figures/circularPlot_ISS_cluster1_2_TSS_gene_highly_correlated_among_increase_disease_COMMPASS_only_tumour_with_NRF1_consensus_4cell_lines_0124_cluster_col_canberra_ward.D2_rows_manhattan_ward.D2_1023.png)
+![Fig4f_ISS_per_cluster2](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/figures/circularPlot_ISS_cluster2_2_TSS_gene_highly_correlated_among_increase_disease_COMMPASS_only_tumour_with_NRF1_consensus_4cell_lines_0124_cluster_col_canberra_ward.D2_rows_manhattan_ward.D2_1023.png)
 
 ## Survival analysis based on patient subdivision from the heatmap
 
@@ -431,9 +413,9 @@ gg_surv <- ggsurvplot(fit,
 <figure>
 <img
 src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/figures/survival_cluster_2_TSS_gene_highly_correlated_among_increase_disease_COMMPASS_only_tumour_with_NRF1_consensus_4cell_lines_0124_cluster_col_canberra_ward.D2_rows_manhattan_ward.D2_1023.png"
-alt="Fig4f_survival_by_NRF1_gene_regulated_signature" />
+alt="Fig4g_survival_by_NRF1_gene_regulated_signature" />
 <figcaption
-aria-hidden="true">Fig4f_survival_by_NRF1_gene_regulated_signature</figcaption>
+aria-hidden="true">Fig4g_survival_by_NRF1_gene_regulated_signature</figcaption>
 </figure>
 
 ## Survival analysis at each ISS based on patient subdivision from the heatmap
@@ -489,6 +471,6 @@ re <- arrange_ggsurvplots(splots, print = TRUE,ncol = 3, nrow = 1, risk.table.he
 <figure>
 <img
 src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/figures/survival_COMMPASS_signature_high_corr_divided_per_ISS_0124.png"
-alt="Fig4_survival_by_iss" />
-<figcaption aria-hidden="true">Fig4_survival_by_iss</figcaption>
+alt="Fig4h_survival_by_iss" />
+<figcaption aria-hidden="true">Fig4h_survival_by_iss</figcaption>
 </figure>
