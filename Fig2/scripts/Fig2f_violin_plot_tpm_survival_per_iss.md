@@ -65,7 +65,7 @@ p <- ggviolin(df_low,x = "x_name", y = "NRF1", fill = "expr_level", color = "#69
 
 <figure>
 <img
-src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/TPM_per_ISS_in_population_divided_per_NRF1_expression_vertical_boxplot_per_iss_with_statistics_ONLY_LOW_WITH_jonckheereTest_INCRESING_WITH_ISS_25feb25.png"
+src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/figures/TPM_per_ISS_in_population_divided_per_NRF1_expression_vertical_boxplot_per_iss_with_statistics_ONLY_LOW_WITH_jonckheereTest_INCRESING_WITH_ISS_25feb25.png"
 alt="Fig2f_violin_plot_survival_per_ISS_group_LOW" />
 <figcaption
 aria-hidden="true">Fig2f_violin_plot_survival_per_ISS_group_LOW</figcaption>
