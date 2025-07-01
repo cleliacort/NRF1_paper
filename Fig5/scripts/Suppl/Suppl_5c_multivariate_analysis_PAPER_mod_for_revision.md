@@ -1,4 +1,4 @@
-# Multivariate Analysis
+# Suppl3_multivariate_analysis_PAPER
 
 Retrieve and customize clinical information.
 
@@ -304,96 +304,6 @@ custom_results %>% kbl() %>% kable_styling()
 custom_results %>% kbl() %>% kable_styling() %>% save_kable(name_table)
 write.xlsx(custom_results, "data/Suppl/univariate_table_patient_ID_based_cluster_heatmap_COMMPASS_derived_from_high_correlated_cluster1_signature_paper_features_selection_0124.xlsx",colNames = TRUE)
 write.xlsx(custom_results, "figures/univariate_table_patient_ID_based_cluster_heatmap_COMMPASS_derived_from_high_correlated_cluster1_signature_paper_features_selection_REVISION_v2_0625.xlsx",colNames = TRUE)
-```
-
-Count the number of patient for each group and the varianza of censos
-info (just for check)
-
-``` r
-options(scipen = 0, digits = 2)
-covariates <- c(  "traslocationNSD2_CALL","traslocationCCND3_CALL",
-                  "traslocationMYC_CALL","traslocationMAFA_CALL","traslocationCCND1_CALL","traslocationCCND2_CALL",
-                  "traslocationMAF_CALL","traslocationMAFB_CALL","mutationTP53","mutationFGFR3",
-                  "mutationDIS3","mutationKRAS","mutationBRAF",
-                  "mutationHIST1H1E","mutationLTB","mutationMAFA","mutationMAFB","mutationMAF","mutationCCND1",
-                  "mutationSP140",
-                  "mutationCYLD","mutationHUWE1",
-                  "mutationEGR1","mutationPRKD2",
-                  "mutationTRAF3",
-                  "mutationFAT3","mutationIGLL5",
-                  "mutationATM","mutationNRAS",
-                  "mutationACTG1",
-                  "mutationDUSP2","mutationMAX","mutationFAM46C",
-                  "del_1p22_manual_Call","gain_1q21_manual_Call",
-                  "del_13q14_manual_Call","del_17p13_manual_Call","SeqWGS_Cp_Hyperdiploid_Call")
-
-df_results_population <- data.frame(variable="",samples_yes="",samples_no="",variability_censos_YES="",variability_censos_NO="")
-
-# Customized way to organize the results
-for (i in 1:length(covariates)){
-        print(covariates[i])
-        var_name <- covariates[i]
-        sample_size_yes <- sum(info_multi_clean[[var_name]] == "Yes", na.rm = TRUE)
-        sample_size_no <- sum(info_multi_clean[[var_name]] == "No", na.rm = TRUE)
-        df_yes <- info_multi_clean %>% select(!!var_name,censos) %>% filter(info_multi_clean[[var_name]]=="Yes")
-        df_no <- info_multi_clean %>% select(!!var_name,censos) %>% filter(info_multi_clean[[var_name]]=="No")
-        
-        # Compute proportion of "Yes" (1)
-        p1 <- mean(df_yes$censos)
-        p2 <- mean(df_no$censos)
-        
-        df_sub <- data.frame(variable=var_name,samples_yes=sample_size_yes,samples_no=sample_size_no, variability_censos_YES=p1,variability_censos_NO=p2)
-        
-        df_results_population <- rbind(df_results_population,df_sub)
-}
-```
-
-    ## [1] "traslocationNSD2_CALL"
-    ## [1] "traslocationCCND3_CALL"
-    ## [1] "traslocationMYC_CALL"
-    ## [1] "traslocationMAFA_CALL"
-    ## [1] "traslocationCCND1_CALL"
-    ## [1] "traslocationCCND2_CALL"
-    ## [1] "traslocationMAF_CALL"
-    ## [1] "traslocationMAFB_CALL"
-    ## [1] "mutationTP53"
-    ## [1] "mutationFGFR3"
-    ## [1] "mutationDIS3"
-    ## [1] "mutationKRAS"
-    ## [1] "mutationBRAF"
-    ## [1] "mutationHIST1H1E"
-    ## [1] "mutationLTB"
-    ## [1] "mutationMAFA"
-    ## [1] "mutationMAFB"
-    ## [1] "mutationMAF"
-    ## [1] "mutationCCND1"
-    ## [1] "mutationSP140"
-    ## [1] "mutationCYLD"
-    ## [1] "mutationHUWE1"
-    ## [1] "mutationEGR1"
-    ## [1] "mutationPRKD2"
-    ## [1] "mutationTRAF3"
-    ## [1] "mutationFAT3"
-    ## [1] "mutationIGLL5"
-    ## [1] "mutationATM"
-    ## [1] "mutationNRAS"
-    ## [1] "mutationACTG1"
-    ## [1] "mutationDUSP2"
-    ## [1] "mutationMAX"
-    ## [1] "mutationFAM46C"
-    ## [1] "del_1p22_manual_Call"
-    ## [1] "gain_1q21_manual_Call"
-    ## [1] "del_13q14_manual_Call"
-    ## [1] "del_17p13_manual_Call"
-    ## [1] "SeqWGS_Cp_Hyperdiploid_Call"
-
-``` r
-df_big <- merge(custom_results,df_results_population,by="variable",all.x = TRUE) %>% arrange(status)
-```
-
-``` r
-name_table=paste0("figures/","POPOLAZIONE_MUT_TRASL_GAIN_LOSS_univariate_table_patient_ID_based_cluster_heatmap_COMMPASS_derived_from_high_correlated_cluster1_signature_paper_features_selection_REVISION_v2_0325.pdf")
-df_big %>% kbl() %>% kable_styling() %>% save_kable(name_table)
 ```
 
 Calculate the multivariate using variables significant at univariate

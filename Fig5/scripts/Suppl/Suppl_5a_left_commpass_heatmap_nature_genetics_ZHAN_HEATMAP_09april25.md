@@ -156,27 +156,10 @@ Subset matrix
 Zhan_et_gene_sign <- read_delim("data/Zhan_et_2006_gene_signatures_08april25.tsv", 
     delim = "\t", escape_double = FALSE, 
     col_names = FALSE, trim_ws = TRUE, skip = 2) %>% select(X2,X5)
-```
 
-    ## Rows: 350 Columns: 5
-    ## ── Column specification ────────────────────────────────────────────────────────
-    ## Delimiter: "\t"
-    ## chr (4): X1, X2, X3, X5
-    ## dbl (1): X4
-    ## 
-    ## ℹ Use `spec()` to retrieve the full column specification for this data.
-    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-
-``` r
 colnames(Zhan_et_gene_sign) <- c("gene_names","group_sign")
 
 mart37 <- biomaRt::useMart(biomart = "ENSEMBL_MART_ENSEMBL",dataset = "hsapiens_gene_ensembl",host = "grch37.ensembl.org")
-```
-
-    ## Warning: Ensembl will soon enforce the use of https.
-    ## Ensure the 'host' argument includes "https://"
-
-``` r
 genes37 <-  biomaRt::getBM(attributes = c("ensembl_gene_id","hgnc_symbol"), mart=mart37)
 
 Zhan_et_gene_sign <- merge(Zhan_et_gene_sign,genes37,by.x = "gene_names", by.y="hgnc_symbol")
@@ -198,15 +181,6 @@ Define the annotation.
 
 ``` r
 metadata_df <- data_frame(Visit_ID=colnames(matrix_prova_scale))
-```
-
-    ## Warning: `data_frame()` was deprecated in tibble 1.1.0.
-    ## ℹ Please use `tibble()` instead.
-    ## This warning is displayed once every 8 hours.
-    ## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-    ## generated.
-
-``` r
 pheno_order <- merge(metadata_df,df_all_info,by="Visit_ID") %>% distinct()
 
 colAnn <- HeatmapAnnotation(
