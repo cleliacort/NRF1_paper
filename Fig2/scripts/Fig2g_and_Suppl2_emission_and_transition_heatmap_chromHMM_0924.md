@@ -44,7 +44,7 @@ heatmap_emi <- ggplot(emissions_6, aes(x = modifications, y = as.factor(`State (
 <figure>
 <img
 src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/figures/heatmap_emission_made_0924.png"
-alt="Fig2_NRF1_median_expression_survival" />
+alt="Fig2g_heatmap_emission" />
 <figcaption
 aria-hidden="true">Fig2_NRF1_median_expression_survival</figcaption>
 </figure>
@@ -76,7 +76,7 @@ heatmap_transitions <- ggplot(transitions_6, aes(x = transitions, y = as.factor(
 <figure>
 <img
 src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/figures/Suppl/heatmap_transitions_made_0924.png"
-alt="Fig2g_emission_and_transition_heatmap_chromHMM" />
+alt="Fig2g_heatmap_transitions" />
 <figcaption
 aria-hidden="true">Fig2g_emission_and_transition_heatmap_chromHMM</figcaption>
 </figure>
