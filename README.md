@@ -84,7 +84,7 @@ Rscript make_ggbarplot.r -i data/Suppl/number_of_peaks_per_sample_atac_tumour_mg
 
 ## **Suppl4**
 
-[Suppl_4a_bubbleplot_iss_genetics](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/scripts/Suppl/Suppl_4a_bubbleplot_iss_genetics.Rmd)
+[Suppl_4a_bubbleplot_iss_genetics](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/scripts/Suppl/Suppl_4a_bubbleplot_iss_genetics.md)
 
 [Suppl_4b_detect_correlated_target_gene_from_COMMPASS](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/scripts/Suppl/commpass_search_for_correlated_genes_auto_PAPER.R): the R script was executed with the following parameters and the resulting plot can be found [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig4/figures/Suppl/heatmap_correlation_compass_progression_10_master_list_consensus_our_chip_1123_ANNOTATED_selected_TSS_minus_plus_2kb_UP_05_wilcox_OR_ISS_pv1_3_0124_manhattan_ward.D_manhattan_ward.D.png)
 
