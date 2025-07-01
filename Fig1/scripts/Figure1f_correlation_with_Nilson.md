@@ -100,5 +100,5 @@ plot <- ggplot(df_results,aes(y= correlation_spearman, x=rank)) +
 src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/figures/spearman_correlation_ROMA_vs_NILSON_footprinting_wg_percentage_no_labels.png"
 alt="Figure1d_correlation_with_Nilson_dataset" />
 <figcaption
-aria-hidden="true">Figure1d_correlation_with_Nilson_dataset</figcaption>
+aria-hidden="true">Figure1f_correlation_with_Nilson_dataset</figcaption>
 </figure>

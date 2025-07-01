@@ -1,3 +1,5 @@
+# Suppl_2a_depmap_dependency
+
 Load required libraries
 
 ``` r
@@ -51,7 +53,7 @@ show(ggplot_c2)
 <figure>
 <img
 src="https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/figures/Suppl/depmap_dependency_cluster_motif_2_0724.png"
-alt="Fig2_NRF1_median_expression_survival" />
+alt="Suppl_2a_depmap_dependency" />
 <figcaption
-aria-hidden="true">Fig2_NRF1_median_expression_survival</figcaption>
+aria-hidden="true">Suppl_2a_depmap_dependency</figcaption>
 </figure>
