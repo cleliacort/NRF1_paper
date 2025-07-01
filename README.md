@@ -6,7 +6,7 @@ This repository contains the code for analyzing data and generating figures in "
 
 The scripts for reproducing the work are organized by figure. The raw data used to generate the plots will soon be available on the GEO website. Please email me if you need access to specific processed datasets. 
 
-**Figure 1. Epigenetic profiling of NRF1 reveals NRF1 as a binder of highly penetrant loci**
+**Figure 1**
 
 [Fig1b_dataset_description](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Figure1b_dataset_pheno_description.md): 
 
@@ -18,15 +18,15 @@ Rscript ./scripts/Figure1c_motif_matrix_heatmap.R -i ./data/matrix_motif_atac_tu
 
 [Figure1f_correlation_with_Nilson.md](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Figure1f_correlation_with_Nilson.md)
 
-**Figure 2.**
+**Figure 2**
 
-[Fig2d_NRF1_median_expression_survival](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/scripts/commpass_survival_gene_auto.R): The R script was executed with the following parameters, and the resulting plot can be found [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/figures/survival_cluster_survival_commpass_NRF1_median_1123.png)
+[Fig2e_NRF1_median_expression_survival](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/scripts/commpass_survival_gene_auto.R): The R script was executed with the following parameters, and the resulting plot can be found [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/figures/survival_cluster_survival_commpass_NRF1_median_1123.png)
 
 ```bash
 Rscript ./commpass_survival_gene_auto.R -i "NRF1" -r ../COMMPASS_IA17/MMRF_CoMMpass_IA17_salmon_geneUnstranded_tpm.tsv -o ./figures -p survival_commpass_NRF1_median_1123 -surv ../COMMPASS_IA17/CoMMpass_IA17_FlatFiles_0323/MMRF_CoMMpass_IA17_STAND_ALONE_SURVIVAL_V2.tsv -c "CD138pos" -t "median"
 ```
 
-[Fig2e_boxplots_showing_NRF1_enrichment_vs_ISS](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/scripts/Fig2e_boxplot_tpm_survival.md)
+[Fig2f_violin_plot_tpm_survival_per_iss](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/scripts/Fig2f_violin_plot_tpm_survival_per_iss.md)
 
 [Fig2g_emission_and_transition_heatmap_chromHMM](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/scripts/Fig2g_and_Suppl2_emission_and_transition_heatmap_chromHMM_0924.md)
 
@@ -54,15 +54,15 @@ Rscript Fig4/scripts/commpass_for_signature_auto_ensID_2_pv1_3.R -v data/MMRF_Co
 
 **Suppl1**
 
-[Suppl_1_saturation_plot](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Suppl/Suppl_1a_saturation_plot.md)
+[Suppl_1a_saturation_plot](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Suppl/Suppl_1a_saturation_plot.md)
 
-[Suppl_1_counts_peaks_SI_checks](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Suppl/Suppl_1b_counts_peaks_SI_checks.md)
-
-[Suppl_1_make_ggbarplot](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Suppl/Suppl_1b_make_ggbarplot.R): the R script was executed with the following parameters and the resulting plot can be found [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/figures/Suppl/peaks_for_SI_atac_tumour_mgus_0423.png)
+[Suppl_1b_top_make_ggbarplot](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Suppl/Suppl_1b_make_ggbarplot.R): the R script was executed with the following parameters and the resulting plot can be found [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/figures/Suppl/peaks_for_SI_atac_tumour_mgus_0423.png)
 
 ```jsx
 Rscript make_ggbarplot.r -i data/Suppl/number_of_peaks_per_sample_atac_tumour_mgus_2023.txt -o figures/Suppl -p peaks_for_SI_atac_tumour_mgus_0423.png -x "Filename" -y "NumLines" -pheno data/Suppl/sample_sheet_official_clinical_2023_subsetted_PHENOTYPE.csv -y_lab "Number of peaks" -x_lab ""
 ```
+
+[Suppl_1b_bottom_counts_peaks_SI_checks](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Suppl/Suppl_1b_counts_peaks_SI_checks.md)
 
 **Suppl2**
 
