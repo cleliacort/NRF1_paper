@@ -19,7 +19,7 @@ related to each patient.
 ``` r
 samplesheet_orig <- read_delim("data/samplesheet_with_clinical_data_customized_cytogenetic_pc_info_mm59bis_4kpeaks_necessary_info_03september2024.tsv",delim = "\t", col_names = T) 
 
-peaks <- read.delim("data/number_of_peaks_per_sample_atac_tumour_mgus_2023.txt",sep = "\t", header = T) %>% arrange(NumLine)
+peaks <- read.delim("data/Suppl/number_of_peaks_per_sample_atac_tumour_mgus_2023.txt",sep = "\t", header = T) %>% arrange(NumLine)
 
 samplesheet <- merge(samplesheet_orig,peaks,by.x="official_labelling",by.y="Filename")
 ```
@@ -107,13 +107,6 @@ number_peaks_barplot <- samplesheet %>% select("official_labelling","NumLine") %
 Make the sub-heatmap with the number of tumour plasma cell information.
 
 ``` r
-# pc_perc <- samplesheet %>% select("official_labelling","PC% MIDOLLARI (PM)  esordio","NumLine") %>% 
-#   column_to_rownames(var="official_labelling") %>% arrange(NumLine) %>% select(-NumLine) %>% 
-#   separate("PC% MIDOLLARI (PM)  esordio",c("perc",NA),sep="%") %>% 
-#   mutate(perc=as.numeric(perc))
-# df_pc <- as.data.frame(t(pc_perc))
-# df_matrix_pc <- as.matrix(df_pc)
-
 sub_pc <- samplesheet %>% select("official_labelling","perc_PC_pat","NumLine") %>% 
   column_to_rownames(var="official_labelling") %>% arrange(NumLine) %>% select(-NumLine)
 df_pc <- as.data.frame(t(sub_pc))
