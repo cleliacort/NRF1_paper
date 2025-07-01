@@ -6,7 +6,7 @@ This repository contains the code for analyzing data and generating figures in "
 
 The scripts for reproducing the work are organized by figure. The raw data used to generate the plots will soon be available on the GEO website. Please email me if you need access to specific processed datasets. 
 
-**Figure 1**
+## **Figure 1**
 
 [Fig1b_dataset_description](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Figure1b_dataset_pheno_description.md): 
 
@@ -18,7 +18,7 @@ Rscript ./scripts/Figure1c_motif_matrix_heatmap.R -i ./data/matrix_motif_atac_tu
 
 [Figure1f_correlation_with_Nilson.md](https://github.com/cleliacort/NRF1_paper/blob/main/Fig1/scripts/Figure1f_correlation_with_Nilson.md)
 
-**Figure 2**
+## **Figure 2**
 
 [Fig2e_NRF1_median_expression_survival](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/scripts/commpass_survival_gene_auto.R): The R script was executed with the following parameters, and the resulting plot can be found [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/figures/survival_cluster_survival_commpass_NRF1_median_1123.png)
 
@@ -28,9 +28,9 @@ Rscript ./commpass_survival_gene_auto.R -i "NRF1" -r ../COMMPASS_IA17/MMRF_CoMMp
 
 [Fig2f_violin_plot_tpm_survival_per_iss](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/scripts/Fig2f_violin_plot_tpm_survival_per_iss.md)
 
-[Fig2g_emission_and_transition_heatmap_chromHMM](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/scripts/Fig2g_and_Suppl2_emission_and_transition_heatmap_chromHMM_0924.md)
+[Fig2h_emission_and_transition_heatmap_chromHMM](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/scripts/Fig2g_and_Suppl2_emission_and_transition_heatmap_chromHMM_0924.md)
 
-**Figure 3. NRF1 binding is higher at selected regions in patients**
+## **Figure 3**
 
 [Fig3_heatmap_cell_lines_mgus_atac](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/scripts/deeptool_heatmap_atac_1023_PAPER.sh): click [here](https://github.com/cleliacort/NRF1_paper/blob/main/Fig3/figures/deptools_plotprofile_NRF1_consensus_TUMOUR_OF_MGUS_U266_RPMI_KMS27_MM196new_ON_10_master_list_consensus_our_chip_1123_2000_5000_5000_0_2_kmeans1_colorList7.png) to view the resulting heatmap plot.
 
@@ -66,9 +66,9 @@ Rscript make_ggbarplot.r -i data/Suppl/number_of_peaks_per_sample_atac_tumour_mg
 
 **Suppl2**
 
-[Suppl_2_CRISP_depmap_dependency](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/scripts/Suppl/Suppl2_depmap_dependency.md) 
+[Suppl_2a_CRISP_depmap_dependency](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/scripts/Suppl/Suppl_2a_depmap_dependency.md) 
 
-[Suppl_2_NRF1_enhancer_promoter_enrichment_evaluation](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/scripts/Suppl/Suppl2_counts_enhancer_and_promoter_NRF1.md) 
+[Suppl_2g_NRF1_enhancer_promoter_enrichment_evaluation](https://github.com/cleliacort/NRF1_paper/blob/main/Fig2/scripts/Suppl/Suppl_2g_counts_enhancer_and_promoter_NRF1.md) 
 
 **Suppl3**
 
