@@ -54,18 +54,7 @@ phenotype data
 genetic_NEW_INFO <- read_delim("data/genetic_NEW_INFO_added_to_those_used_in_our_paper_03APRILE.txt", 
     delim = "\t", escape_double = FALSE, 
     trim_ws = TRUE) %>% select(-traslocationNSD2_CALL,-traslocationCCND3_CALL, -traslocationMYC_CALL,-traslocationMAFA_CALL,-traslocationCCND1_CALL,-traslocationCCND2_CALL,-traslocationMAF_CALL,-traslocationMAFB_CALL)
-```
 
-    ## Rows: 638 Columns: 19
-    ## ── Column specification ────────────────────────────────────────────────────────
-    ## Delimiter: "\t"
-    ## chr  (5): Visit_ID, patient_id, plusplus15_INFO, MYC_STR, PR_index
-    ## dbl (14): Prolif_Index, del_1p22_manual_Call, gain_1q21_manual_Call, del_13q...
-    ## 
-    ## ℹ Use `spec()` to retrieve the full column specification for this data.
-    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-
-``` r
 pheno_order <- merge(surv_stage_iss_mut_trasloc,genetic_NEW_INFO,by="Visit_ID")
 ```
 
@@ -76,31 +65,11 @@ combine
 C1 <- read_delim("data/cluster_motif_1_CLUSTERS_TOT_2_TSS_gene_highly_correlated_among_increase_disease_COMMPASS_only_tumour_with_NRF1_consensus_4cell_lines_0124_cluster_col_canberra_ward.D2_rows_manhattan_ward.D2_0124.txt", 
     delim = "\t", escape_double = FALSE, 
     col_names = FALSE, trim_ws = TRUE) %>% mutate(cluster_group="C1")
-```
 
-    ## Rows: 379 Columns: 1
-    ## ── Column specification ────────────────────────────────────────────────────────
-    ## Delimiter: "\t"
-    ## chr (1): X1
-    ## 
-    ## ℹ Use `spec()` to retrieve the full column specification for this data.
-    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-
-``` r
 C2 <- read_delim("data/cluster_motif_2_CLUSTERS_TOT_2_TSS_gene_highly_correlated_among_increase_disease_COMMPASS_only_tumour_with_NRF1_consensus_4cell_lines_0124_cluster_col_canberra_ward.D2_rows_manhattan_ward.D2_0124.txt", 
     delim = "\t", escape_double = FALSE, 
     col_names = FALSE, trim_ws = TRUE) %>% mutate(cluster_group="C2")
-```
 
-    ## Rows: 259 Columns: 1
-    ## ── Column specification ────────────────────────────────────────────────────────
-    ## Delimiter: "\t"
-    ## chr (1): X1
-    ## 
-    ## ℹ Use `spec()` to retrieve the full column specification for this data.
-    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-
-``` r
 df_results <- rbind(C1,C2) %>% rename(public_id=X1)
 ```
 
